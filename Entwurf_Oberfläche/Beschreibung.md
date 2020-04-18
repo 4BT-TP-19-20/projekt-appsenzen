@@ -33,6 +33,7 @@
 </details>
 
 <details><summary>Einstellungen.fxml</summary>
+ 
   - Enthält die Einstellungen der App 
   - Wird durch einen Knopf auf der oberen Leiste aufgerufen 
   * Kann statisch erzeugt werden, da bei den Einstellungen wenig geändert werden muss
