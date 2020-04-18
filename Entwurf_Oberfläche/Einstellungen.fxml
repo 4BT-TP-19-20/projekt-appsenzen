@@ -36,7 +36,7 @@
 <?import com.gluonhq.charm.glisten.mvc.View?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -46,65 +46,18 @@
 
 
 <View maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <GridPane BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="180.0" minHeight="0.0" prefHeight="41.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="452.0" minHeight="8.0" prefHeight="77.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="513.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="513.0" minHeight="0.0" prefHeight="36.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="513.0" minHeight="10.0" prefHeight="353.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label text="Schülerinformationen:">
-               <GridPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </GridPane.margin>
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="66.0" prefWidth="305.0" text="Name: Max Mustermann&#10;Klasse: 0XY&#10;Zu erledigende Liegestütze: 20&#10;&#10;" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </GridPane.margin>
-            </Label>
-            <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="342.0" text="Abwesend" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </GridPane.margin>
-            </RadioButton>
-            <Label prefHeight="18.0" prefWidth="413.0" text="Absenzenliste:" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </GridPane.margin>
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
-            </Label>
-            <Label alignment="TOP_LEFT" prefHeight="368.0" prefWidth="335.0" text="- Mo, 20.04.2020&#10;- Mo, 27.04.2020&#10;- Mo, 04.05.2020&#10;- Mo, 11.05.2020" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </GridPane.margin>
-            </Label>
-         </children>
-      </GridPane>
-   </center>
    <top>
       <AnchorPane prefHeight="40.0" prefWidth="335.0" BorderPane.alignment="CENTER">
          <children>
             <GridPane prefHeight="40.0" prefWidth="335.0" style="-fx-background-color: #b141f2;">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
                   <Icon content="ARROW_BACK" />
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="36.0" prefWidth="172.0" text="AppSenzen" GridPane.columnIndex="1">
@@ -112,10 +65,45 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Icon content="SETTINGS" GridPane.columnIndex="2" />
                </children>
             </GridPane>
          </children>
       </AnchorPane>
    </top>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="163.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="172.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="203.0" minHeight="0.0" prefHeight="46.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="523.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="523.0" minHeight="10.0" prefHeight="481.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label prefHeight="63.0" prefWidth="335.0" text="Einstellungen:" GridPane.columnSpan="2">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label prefHeight="18.0" prefWidth="188.0" text="Liegestütze/Fehlstunde:" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField alignment="CENTER" promptText="20" style="-fx-border-color: #b141f2;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </TextField>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </GridPane>
+   </center>
 </View>
