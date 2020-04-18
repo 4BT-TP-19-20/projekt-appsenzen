@@ -7,15 +7,18 @@
         android:layout_height="match_parent"
         tools:context=".SettingsActivity">
 
-    <include
+    <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            layout="@layout/toolbar"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp"
+            android:minHeight="?attr/actionBarSize"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
             android:text="Option Screen"
