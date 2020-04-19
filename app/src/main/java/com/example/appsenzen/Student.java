@@ -1,14 +1,38 @@
 package com.example.appsenzen;
 
 public class Student {      //I spam oanfoch olles auf public noa mussi net long nochdenkn, und ändos noa aonfoch zum schluss xD
-    public String name;
-    public int totalPushups;
-    public int remainingPushups;
+    private String name;
+    private int totalPushups;
+    private int remainingPushups;
 
-    Student(String name){
+    public Student(String name){
         this.name = name;
         this.totalPushups = 0;
         this.remainingPushups = 0;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getTotalPushups() {
+        return totalPushups;
+    }
+
+    public void setTotalPushups(int totalPushups) {
+        this.totalPushups = totalPushups;
+    }
+
+    public int getRemainingPushups() {
+        return remainingPushups;
+    }
+
+    public void setRemainingPushups(int remainingPushups) {
+        this.remainingPushups = remainingPushups;
     }
 
     public void addPushups(int pushups){
