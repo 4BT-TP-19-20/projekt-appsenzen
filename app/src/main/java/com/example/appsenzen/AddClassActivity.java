@@ -3,7 +3,7 @@ package com.example.appsenzen;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ActivityAddClass extends AppCompatActivity {
+public class AddClassActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
