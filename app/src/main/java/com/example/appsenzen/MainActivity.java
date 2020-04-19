@@ -8,10 +8,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +25,44 @@ public class MainActivity extends AppCompatActivity {
         //sets the created toolbar as the actionbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        setupTabs();
+    }
+
+    private void setupTabs(){
+        TabLayout tabLayout = findViewById(R.id.tabs);
+        TabItem tabClasses = findViewById(R.id.tab_classes);
+        TabItem tabDashboard = findViewById(R.id.tab_dashboard);
+        TabItem tabTimetable = findViewById(R.id.tab_timetable);
+
+        //selects the second tab
+        tabLayout.selectTab(tabLayout.getTabAt(1));
+
+        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+
+        final ViewPager viewPager = findViewById(R.id.viewPager);
+        viewPager.setAdapter(pageAdapter);
+
+        //adds listener to change tab selection when swiping between pages
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        //changes pages when a tab is clicked
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     @Override
