@@ -5,4 +5,7 @@
     <string name="tab_dashboard">Dashboard</string>
     <string name="tab_timetable">Timetable</string>
     <string name="add_class">Add Class</string>
+    <string name="button_add_class_confirm">Add Class</string>
+    <string name="add_class_input">class name</string>
+    <string name="add_class_prompt">Please enter the following</string>
 </resources>

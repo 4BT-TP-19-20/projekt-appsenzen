@@ -6,4 +6,7 @@
     <string name="tab_dashboard">Dashboard</string>
     <string name="tab_timetable">Stundenplan</string>
     <string name="add_class">Klasse hinzufügen</string>
+    <string name="button_add_class_confirm">Klasse hinzufügen</string>
+    <string name="add_class_input">Klassenname</string>
+    <string name="add_class_prompt">Bitte folgendes eingeben</string>
 </resources>
