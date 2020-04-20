@@ -7,4 +7,7 @@
     <string name="add_class">Add Class</string>
     <string name="pushups_per_skip">Pushups/Skipped lesson</string>
     <string name="pushup_per_skip_summary">Specify how many pushups the student has to do per skipped lesson</string>
+    <string name="add_class_prompt">Please enter the following:</string>
+    <string name="button_add_class_confirm">Add Class</string>
+    <string name="add_class_input">class name</string>
 </resources>
