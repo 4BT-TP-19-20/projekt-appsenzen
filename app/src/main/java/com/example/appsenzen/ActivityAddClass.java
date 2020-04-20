@@ -3,6 +3,7 @@ package com.example.appsenzen;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -22,5 +23,10 @@ public class ActivityAddClass extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         className = inputClass.getText().toString();
+        showToast(className);
+    }
+
+    private void showToast(String text){
+        Toast.makeText(ActivityAddClass.this,"Added '" +text+"' to classes", Toast.LENGTH_SHORT).show();
     }
 }
