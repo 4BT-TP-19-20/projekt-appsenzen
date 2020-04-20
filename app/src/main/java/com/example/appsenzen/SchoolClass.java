@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class SchoolClass {
 
-    private final ArrayList<Student> schoolClass = new ArrayList<>();
-    private String className;
+    private final ArrayList<Student> students = new ArrayList<>();
+    private final String className;
     private int studentCount;
 
     public SchoolClass(String name){
@@ -19,31 +19,24 @@ public class SchoolClass {
         return className;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
     public int getStudentCount() {
         return studentCount;
     }
 
-    public void setStudentCount(int studentCount) {
-        this.studentCount = studentCount;
-    }
-
     public void addStudent(Student student){
-        schoolClass.add(student);
-        ++studentCount;
-    }
-
-    public void removeStudent(Student student){
-        if (!schoolClass.isEmpty()){
-            schoolClass.remove(student);
-            --studentCount;
+        if(!students.contains(student)){
+            students.add(student);
+            student.setSchoolClass(this);
+            ++studentCount;
         }
     }
 
-
+    public void removeStudent(Student student){
+        if (!students.isEmpty() && students.contains(student)){
+            students.remove(student);
+            --studentCount;
+        }
+    }
 }
 
 
