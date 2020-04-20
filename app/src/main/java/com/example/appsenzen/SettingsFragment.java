@@ -2,14 +2,50 @@ package com.example.appsenzen;
 
 import android.os.Bundle;
 
+import android.text.InputType;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import androidx.annotation.NonNull;
+import androidx.preference.EditTextPreference;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
+
+        //tells the preference to only use numbers
+        EditTextPreference editTextPreference = findPreference("pushups_per_skip");
+        assert editTextPreference != null;
+        editTextPreference.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
+            @Override
+            public void onBindEditText(@NonNull EditText editText) {
+                editText.setInputType(InputType.TYPE_CLASS_PHONE);
+            }
+        });
+
     }
 
 }

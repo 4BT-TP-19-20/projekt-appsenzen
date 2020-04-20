@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
 
     <EditTextPreference
             android:key="pushups_per_skip"
             android:title="@string/pushups_per_skip"
-            android:summary="@string/pushup_per_skip_summary"/>
-            android:defaultValue="20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:summary="@string/pushup_per_skip_summary"
+            android:inputType="number"/>
 
+    <Preference
+            android:key="test"
+            android:title="Test"
+            android:summary="This is a test"/>
 
 
 </PreferenceScreen>
