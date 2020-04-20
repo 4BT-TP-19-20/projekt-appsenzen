@@ -5,4 +5,5 @@
     <string name="tab_classes">Klassen</string>
     <string name="tab_dashboard">Dashboard</string>
     <string name="tab_timetable">Stundenplan</string>
+    <string name="add_class">Klasse hinzufügen</string>
 </resources>
