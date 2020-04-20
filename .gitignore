@@ -12,3 +12,10 @@
 /captures
 .externalNativeBuild
 .cxx
+/.idea/.gitignore
+/.idea/.name
+/.idea/.gradle.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/misc.xml
+/.idea/vcs.xml
+/Entwurf_Oberfläche/Style.css
