@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AppSenzen</string>
+    <string name="menu_settings">Einstellungen</string>
+    <string name="tab_classes">Klassen</string>
+    <string name="tab_dashboard">Dashboard</string>
+    <string name="tab_timetable">Stundenplan</string>
+</resources>

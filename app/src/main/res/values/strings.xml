@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">AppSenzen</string>
     <string name="menu_settings">Settings</string>
+    <string name="tab_classes">Classes</string>
+    <string name="tab_dashboard">Dashboard</string>
+    <string name="tab_timetable">Timetable</string>
 </resources>
