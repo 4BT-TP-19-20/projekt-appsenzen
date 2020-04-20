@@ -4,4 +4,5 @@
     <string name="tab_classes">Classes</string>
     <string name="tab_dashboard">Dashboard</string>
     <string name="tab_timetable">Timetable</string>
+    <string name="add_class">Add Class</string>
 </resources>
