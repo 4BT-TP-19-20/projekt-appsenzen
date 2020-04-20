@@ -6,4 +6,6 @@
     <string name="tab_dashboard">Dashboard</string>
     <string name="tab_timetable">Stundenplan</string>
     <string name="add_class">Klasse hinzufügen</string>
+    <string name="pushups_per_skip">Liegestütze/Fehlstunde</string>
+    <string name="pushup_per_skip_summary">Gib an wie viele Liegestütze der Schüler pro Fehlstunde machen muss</string>
 </resources>

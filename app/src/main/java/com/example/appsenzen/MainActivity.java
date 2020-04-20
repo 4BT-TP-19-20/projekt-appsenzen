@@ -76,8 +76,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.settings) {
-            openSettingsActivity();
+        switch (item.getItemId()){
+            case R.id.settings:
+                openSettingsActivity();
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
