@@ -9,10 +9,5 @@
             android:summary="@string/pushup_per_skip_summary"
             android:inputType="number"/>
 
-    <Preference
-            android:key="test"
-            android:title="Test"
-            android:summary="This is a test"/>
-
 
 </PreferenceScreen>

@@ -28,9 +28,9 @@ public class ClassesFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_classes, container, false);
 
 
-        //for(int i = 0; i <= 20; ++i){
-        //    addButtons(i);
-        //}
+        for(int i = 0; i <= 20; ++i){
+            addButton("lol" + i);
+        }
 
         return view;
     }
@@ -41,7 +41,6 @@ public class ClassesFragment extends Fragment {
     }
 
     public void addButton(final String s) {
-
         Button button = new Button(getContext());
         button.setText(s);
         LinearLayout linearLayout = view.findViewById(R.id.linearlayout);
