@@ -10,26 +10,26 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         //sets the created toolbar as the actionbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         setupTabs();
+        setupFloatingButton();
     }
-
 
     private void setupTabs(){
         TabLayout tabLayout = findViewById(R.id.tabs);
@@ -40,11 +40,16 @@ public class MainActivity extends AppCompatActivity {
         //selects the second tab
         tabLayout.selectTab(tabLayout.getTabAt(1));
 
-        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        final MainPagerAdapter mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager(), this, tabLayout.getTabCount());
 
         final ViewPager viewPager = findViewById(R.id.viewPager);
-        viewPager.setAdapter(pageAdapter);
+        viewPager.setAdapter(mainPagerAdapter);
 
+        tabLayout.setupWithViewPager(viewPager);
+
+
+        //use this if you want to implemet a color changing toolbar
+        /*
         //adds listener to change tab selection when swiping between pages
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
@@ -53,16 +58,31 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+                //pageAdapter.getItem(tab.getPosition()).onResume();
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
+                //pageAdapter.getItem(tab.getPosition()).onPause();
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
 
+            }
+        });
+
+         */
+
+    }
+
+    private void setupFloatingButton(){
+        FloatingActionButton buttonAddClass = findViewById(R.id.buttonAddClass);
+
+        buttonAddClass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAddClassActivity();
             }
         });
     }
@@ -89,4 +109,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
+
+    private void openAddClassActivity(){
+        Intent intent = new Intent(this, AddClassActivity.class);
+        startActivity(intent);
+    }
+
+
+
 }
