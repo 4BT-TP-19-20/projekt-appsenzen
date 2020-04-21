@@ -1,22 +1,34 @@
 package com.example.appsenzen;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class ClassesFragment extends Fragment {
+
+    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
+
     private static final ArrayList<String> existingButtons = new ArrayList<>();
     private View view;
     int counter = 0;
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +37,7 @@ public class ClassesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_classes, container, false);
-
+        
 /*
         for(int i = 0; i <= 20; ++i){
             addButton("Button: " + i);
@@ -49,6 +61,8 @@ public class ClassesFragment extends Fragment {
         existingButtons.clear();
     }
 
+
+
     public void addButton(final String s) {
 
         if(!existingButtons.contains(s)) {
@@ -64,12 +78,17 @@ public class ClassesFragment extends Fragment {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getActivity(), SchoolClassActivity.class);
-                    startActivity(intent);
+                    intent.putExtra("currentClassName", s);
+                    Objects.requireNonNull(getActivity()).startActivity(intent);
+
                 }
             });
             existingButtons.add(s);
+            ClassesFragment test = new ClassesFragment();
+
         }
     }
 
@@ -86,4 +105,6 @@ public class ClassesFragment extends Fragment {
         }
         counter = listSize;
     }
+
+
 }
