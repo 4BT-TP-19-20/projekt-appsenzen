@@ -23,7 +23,13 @@ public class DashboardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
-        addButton("Lol");
+/*
+        for(int i = 0; i <= 20; ++i){
+            addButton("Button: " + i);
+        }
+
+ */
+
         return view;
     }
 

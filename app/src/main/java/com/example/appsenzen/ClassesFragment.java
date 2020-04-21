@@ -27,10 +27,12 @@ public class ClassesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_classes, container, false);
 
-
+/*
         for(int i = 0; i <= 20; ++i){
-            addButton("lol" + i);
+            addButton("Button: " + i);
         }
+
+ */
 
         return view;
     }
