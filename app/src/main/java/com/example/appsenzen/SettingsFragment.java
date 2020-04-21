@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import androidx.annotation.NonNull;
+import androidx.annotation.StringDef;
 import androidx.preference.EditTextPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -23,7 +24,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -34,11 +34,13 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        setPreferencesFromResource(R.xml.preferences, rootKey);
+        setPreferencesFromResource(R.xml.preferences_main, rootKey);
 
         //tells the preference to only use numbers
-        EditTextPreference editTextPreference = findPreference("pushups_per_skip");
+        final EditTextPreference editTextPreference = findPreference("pushups_per_skip");
         assert editTextPreference != null;
+
+
         editTextPreference.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
             @Override
             public void onBindEditText(@NonNull EditText editText) {
@@ -46,6 +48,17 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             }
         });
 
+        editTextPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    preference.setSummary(getString(R.string.pushups_per_skip) + ": " + newValue);
+                    //SchoolClassHandler.setMultiplier((int)newValue);
+                return true;
+            }
+        });
+
     }
+
+
 
 }
