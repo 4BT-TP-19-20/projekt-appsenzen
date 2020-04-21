@@ -10,4 +10,5 @@
     <string name="add_class_prompt">Bitte gib folgendes ein:</string>
     <string name="button_add_class_confirm">Klasse hinzufügen</string>
     <string name="add_class_input">Klassenname</string>
+    <string name="class_name">Klassenname</string>
 </resources>
