@@ -1,6 +1,8 @@
 package com.example.appsenzen;
 
-public class Student {      //I spam oanfoch olles auf public noa mussi net long nochdenkn, und ändos noa aonfoch zum schluss xD
+import java.io.Serializable;
+
+public class Student implements Serializable {
     private final String name;
     private int totalPushups;
     private int remainingPushups;
@@ -8,10 +10,11 @@ public class Student {      //I spam oanfoch olles auf public noa mussi net long
     private String myMissingLog;        //Do schreibmo oanfoch olm wenn oaner fahlt
 
 
-    public Student(String name){
+    public Student(String name, SchoolClass schoolClass){
         this.name = name;
         this.totalPushups = 0;
         this.remainingPushups = 0;
+        this.schoolClass = schoolClass;
     }
 
     public String getName() {

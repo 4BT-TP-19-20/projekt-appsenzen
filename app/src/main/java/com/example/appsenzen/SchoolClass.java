@@ -2,11 +2,14 @@ package com.example.appsenzen;
 
 import android.widget.Button;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SchoolClass {
+public class SchoolClass implements Serializable {
 
     private final ArrayList<Student> students = new ArrayList<>();
+    private final ArrayList<String> studentNames = new ArrayList<>();
+
     private final String className;
     private int studentCount;
 
@@ -24,18 +27,44 @@ public class SchoolClass {
     }
 
     public void addStudent(Student student){
-        if(!students.contains(student)){
+        String name = student.getName();
+        if(!students.contains(student) && !studentNames.contains(name)){
             students.add(student);
-            student.setSchoolClass(this);
+            studentNames.add(name);
             ++studentCount;
         }
     }
 
+    public void addStudent(String name){
+        Student student = new Student(name, this);
+        addStudent(student);
+    }
+
     public void removeStudent(Student student){
-        if (!students.isEmpty() && students.contains(student)){
+        if(students.contains(student)){
+            String name = student.getName();
             students.remove(student);
+            studentNames.remove(name);
             --studentCount;
         }
+    }
+
+    public void removeStudent(String name){
+        if(studentNames.contains(name)){
+            int index = studentNames.indexOf(name);
+            students.remove(index);
+            studentNames.remove(index);
+            --studentCount;
+        }
+    }
+
+    public Student getStudent(int index){
+        return students.get(index);
+    }
+
+    public Student getStudent(String name){
+        int index = studentNames.indexOf(name);
+        return students.get(index);
     }
 
 }
