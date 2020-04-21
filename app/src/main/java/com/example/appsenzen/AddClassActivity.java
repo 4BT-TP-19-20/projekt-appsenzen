@@ -8,6 +8,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class AddClassActivity extends AppCompatActivity{
+
+    //   THIS CLASS IS OBSOLETE, DO NOT USE/EDIT
+    //   THIS CLASS IS OBSOLETE, DO NOT USE/EDIT
+    //   THIS CLASS IS OBSOLETE, DO NOT USE/EDIT
+    //   THIS CLASS IS OBSOLETE, DO NOT USE/EDIT
+    //   THIS CLASS IS OBSOLETE, DO NOT USE/EDIT
+    //   THIS CLASS IS OBSOLETE, DO NOT USE/EDIT
+    //   THIS CLASS IS OBSOLETE, DO NOT USE/EDIT
+    //   THIS CLASS IS OBSOLETE, DO NOT USE/EDIT
+    //   THIS CLASS IS OBSOLETE, DO NOT USE/EDIT
+    //   THIS CLASS IS OBSOLETE, DO NOT USE/EDIT
+    //   THIS CLASS IS OBSOLETE, DO NOT USE/EDIT
     String className;
     Button button;
     EditText inputClass;
