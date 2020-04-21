@@ -10,10 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 
 public class ClassesFragment extends Fragment {
+    private static final ArrayList<String> existingButtons = new ArrayList<>();
     private View view;
-    static int counter = 0;
+    int counter = 0;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,27 +39,38 @@ public class ClassesFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        counter = 0;
+
+    }
+
+    @Override
+    public void onDestroyView() {           //DO NOT TOUCH !!!!
+        super.onDestroyView();              //View gets destroyed upon entering "Settings" (maybe)
+        existingButtons.clear();
     }
 
     public void addButton(final String s) {
-        Button button = new Button(getContext());
-        button.setText(s);
-        LinearLayout linearLayout = view.findViewById(R.id.linearlayout);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        linearLayout.addView(button, params);
+
+        if(!existingButtons.contains(s)) {
+            Button button = new Button(getContext());
+            button.setText(s);
+            LinearLayout linearLayout = view.findViewById(R.id.linearlayout);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
+            linearLayout.addView(button, params);
 
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), SchoolClassActivity.class);
-                startActivity(intent);
-            }
-        });
-
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), SchoolClassActivity.class);
+                    startActivity(intent);
+                }
+            });
+            existingButtons.add(s);
+        }
     }
 
     @Override
