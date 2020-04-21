@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -29,6 +30,14 @@ public class MainActivity extends AppCompatActivity {
 
         setupTabs();
         setupFloatingButton();
+        init();
+    }
+
+    private void init(){
+        if(SchoolClassHandler.getMultiplier() == 0){
+            SchoolClassHandler.setMultiplier(20);
+            //Toast.makeText(this,"First time", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void setupTabs(){
