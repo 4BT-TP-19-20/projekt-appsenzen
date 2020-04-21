@@ -51,9 +51,6 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
         TabItem tabDashboard = findViewById(R.id.tab_dashboard);
         TabItem tabTimetable = findViewById(R.id.tab_timetable);
 
-        //selects the second tab
-        tabLayout.selectTab(tabLayout.getTabAt(1));
-
         final MainPagerAdapter mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager(), this, tabLayout.getTabCount());
 
         final ViewPager viewPager = findViewById(R.id.viewPager);
@@ -61,6 +58,12 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
 
         tabLayout.setupWithViewPager(viewPager);
 
+        //delete if this causes problems
+        //possible keeps all 3 tabs loaded
+        //viewPager.setOffscreenPageLimit(2);
+
+        //selects the second tab
+        tabLayout.selectTab(tabLayout.getTabAt(1));
 
         //use this if you want to implemet a color changing toolbar
         /*
