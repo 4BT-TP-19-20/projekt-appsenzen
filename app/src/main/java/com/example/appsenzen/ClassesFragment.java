@@ -61,4 +61,14 @@ public class ClassesFragment extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {
+
+        super.onResume();
+        int listSize = SchoolClassHandler.getListSize();
+
+        for(int i = 0; i<listSize; i++){
+            addButton(SchoolClassHandler.getNameByIndex(i));
+        }
+    }
 }
