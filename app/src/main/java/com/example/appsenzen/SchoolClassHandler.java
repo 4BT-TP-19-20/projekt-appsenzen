@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public abstract class SchoolClassHandler {
     private static final ArrayList<SchoolClass> schoolClasses = new ArrayList<>();
+
     private static int multiplier;
 
     public static void addSchoolClass(String name){

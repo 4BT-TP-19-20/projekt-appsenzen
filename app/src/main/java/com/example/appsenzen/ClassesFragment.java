@@ -1,14 +1,10 @@
 package com.example.appsenzen;
 
-import android.app.Activity;
-import android.app.FragmentManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +13,7 @@ import android.view.ViewGroup;
 
 public class ClassesFragment extends Fragment {
     private View view;
-
+    static int counter = 0;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +52,8 @@ public class ClassesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), SchoolClassActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -63,12 +61,15 @@ public class ClassesFragment extends Fragment {
 
     @Override
     public void onResume() {
-
         super.onResume();
-        int listSize = SchoolClassHandler.getListSize();
 
-        for(int i = 0; i<listSize; i++){
-            addButton(SchoolClassHandler.getNameByIndex(i));
+        int listSize = SchoolClassHandler.getListSize();                //1
+
+        if(listSize > counter) {                                        //1 > 0
+            for (int i = counter; i < listSize; i++) {                  //i = 0; 0<1; 2
+                addButton(SchoolClassHandler.getNameByIndex(i));
+            }
         }
+        counter = listSize;
     }
 }
