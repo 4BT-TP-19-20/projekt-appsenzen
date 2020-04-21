@@ -40,6 +40,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         final EditTextPreference editTextPreference = findPreference("pushups_per_skip");
         assert editTextPreference != null;
 
+        editTextPreference.setSummary(getString(R.string.pushups_per_skip) + ": " + SchoolClassHandler.getMultiplier());
 
         editTextPreference.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
             @Override
@@ -52,7 +53,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                     preference.setSummary(getString(R.string.pushups_per_skip) + ": " + newValue);
-                    //SchoolClassHandler.setMultiplier((int)newValue);
+                    SchoolClassHandler.setMultiplier(new Integer((String)newValue));
                 return true;
             }
         });
