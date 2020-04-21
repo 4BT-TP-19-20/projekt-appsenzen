@@ -1,5 +1,7 @@
 package com.example.appsenzen;
 
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public abstract class SchoolClassHandler {
@@ -19,5 +21,13 @@ public abstract class SchoolClassHandler {
 
     public static void setMultiplier(int multiplier) {
         SchoolClassHandler.multiplier = multiplier;
+    }
+
+    public static int getListSize(){
+        return schoolClasses.size();
+    }
+
+    public static String getNameByIndex(int index){
+        return schoolClasses.get(index).getClassName();
     }
 }
