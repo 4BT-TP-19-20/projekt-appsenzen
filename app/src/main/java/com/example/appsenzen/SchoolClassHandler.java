@@ -1,6 +1,7 @@
 package com.example.appsenzen;
 
 
+import java.io.*;
 import java.util.ArrayList;
 
 public abstract class SchoolClassHandler {
@@ -60,6 +61,46 @@ public abstract class SchoolClassHandler {
     public static SchoolClass getSchoolClass(String name) {
         int index = schoolClassNames.indexOf(name);
         return schoolClasses.get(index);
+    }
+
+    public static void saveLists() {
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("schoolClasses.ser"))){
+            oos.writeObject(schoolClasses);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("schoolClassNames.ser"))){
+            oos.writeObject(schoolClassNames);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("multiplier.ser"))){
+            oos.writeObject(multiplier);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void loadLists() {
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("schoolClasses.ser"))){
+            schoolClasses = (ArrayList<SchoolClass>) ois.readObject();
+        }catch (IOException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("schoolClassNames.ser"))){
+            schoolClassNames = (ArrayList<String>) ois.readObject();
+        }catch (IOException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("multiplier.ser"))){
+            multiplier = (Integer) ois.readObject();
+        }catch (IOException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
     }
 
 }
