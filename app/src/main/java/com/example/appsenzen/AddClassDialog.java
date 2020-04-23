@@ -44,6 +44,7 @@ public class AddClassDialog extends AppCompatDialogFragment {
             public void onClick(DialogInterface dialog, int which) {
                 String classname = editText.getText().toString();
                 SchoolClassHandler.addSchoolClass(classname);
+                SchoolClassHandler.saveLists();
                 listener.showToast(classname);
             }
         });

@@ -39,9 +39,13 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
     }
 
     private void init(){
+        SchoolClassHandler.setActivityContext(this);
+
+        SchoolClassHandler.loadLists();
+
         if(SchoolClassHandler.getMultiplier() == 0){
             SchoolClassHandler.setMultiplier(20);
-            //Toast.makeText(this,"First time", Toast.LENGTH_SHORT).show();
+            SchoolClassHandler.saveLists();
         }
     }
 
