@@ -24,6 +24,8 @@ public abstract class SchoolClassHandler {
 
     public static void setMultiplier(int multiplier) {
         SchoolClassHandler.multiplier = multiplier;
+
+        saveLists();
     }
 
     public static void setActivityContext(Context context) {
@@ -35,6 +37,8 @@ public abstract class SchoolClassHandler {
         if (!schoolClasses.contains(schoolClass) && !schoolClassNames.contains(name)) {
             schoolClasses.add(schoolClass);
             schoolClassNames.add(name);
+
+            saveLists();
         }
     }
 
@@ -48,6 +52,8 @@ public abstract class SchoolClassHandler {
 
         schoolClasses.remove(schoolClass);
         schoolClassNames.remove(name);
+
+        saveLists();
     }
 
     public static void removeSchoolClass(String name) {
@@ -55,6 +61,8 @@ public abstract class SchoolClassHandler {
 
         schoolClasses.remove(index);
         schoolClassNames.remove(index);
+
+        saveLists();
     }
 
     public static int getListSize() {
@@ -72,6 +80,13 @@ public abstract class SchoolClassHandler {
     public static SchoolClass getSchoolClass(String name) {
         int index = schoolClassNames.indexOf(name);
         return schoolClasses.get(index);
+    }
+
+    public static void clear(){
+        schoolClasses = null;
+        schoolClassNames = null;
+
+        //saveLists();
     }
 
     public static void saveLists() {
