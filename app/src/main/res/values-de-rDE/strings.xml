@@ -12,4 +12,9 @@
     <string name="add_class_input">Klassenname</string>
     <string name="class_name">Klassenname</string>
     <string name="student_name">Schülername</string>
+    <string name="delete_title">Alle Daten löschen</string>
+    <string name="delete_summary">Alle Daten löschen, dies kann nicht rückgängig gemacht werden</string>
+    <string name="button_delete_yes">Löschen</string>
+    <string name="button_delete_no">Abbrechen</string>
+    <string name="delete_success">Alle Daten wurden gelöscht</string>
 </resources>
