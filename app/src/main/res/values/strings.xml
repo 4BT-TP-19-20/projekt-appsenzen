@@ -10,4 +10,5 @@
     <string name="button_add_class_confirm">Add Class</string>
     <string name="add_class_input">class name</string>
     <string name="class_name">class name</string>
+    <string name="student_name">student name</string>
 </resources>
