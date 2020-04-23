@@ -1,6 +1,10 @@
 package com.example.appsenzen;
 
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.util.Log;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -11,12 +15,19 @@ public abstract class SchoolClassHandler {
 
     private static int multiplier;
 
+    @SuppressLint("StaticFieldLeak")
+    private static Context activityContext;
+
     public static int getMultiplier() {
         return multiplier;
     }
 
     public static void setMultiplier(int multiplier) {
         SchoolClassHandler.multiplier = multiplier;
+    }
+
+    public static void setActivityContext(Context context) {
+        activityContext = context;
     }
 
     public static void addSchoolClass(SchoolClass schoolClass) {
@@ -64,41 +75,72 @@ public abstract class SchoolClassHandler {
     }
 
     public static void saveLists() {
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("schoolClasses.ser"))){
+        try {
+            FileOutputStream fos = activityContext.openFileOutput("schoolClasses.ser", Context.MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(schoolClasses);
-        }catch (IOException e){
+            oos.close();
+            fos.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("schoolClassNames.ser"))){
+        try {
+            FileOutputStream fos = activityContext.openFileOutput("schoolClassNames.ser", Context.MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(schoolClassNames);
-        }catch (IOException e){
+            oos.close();
+            fos.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("multiplier.ser"))){
+        try {
+            FileOutputStream fos = activityContext.openFileOutput("multiplier.ser", Context.MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(multiplier);
-        }catch (IOException e){
+            oos.close();
+            fos.close();
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void loadLists() {
-        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("schoolClasses.ser"))){
+        try {
+            FileInputStream fis = activityContext.openFileInput("schoolClasses.ser");
+            ObjectInputStream ois = new ObjectInputStream(fis);
             schoolClasses = (ArrayList<SchoolClass>) ois.readObject();
-        }catch (IOException | ClassNotFoundException e){
+            ois.close();
+            fis.close();
+        } catch (FileNotFoundException e) {
+            //ignore
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
-        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("schoolClassNames.ser"))){
+        try {
+            FileInputStream fis = activityContext.openFileInput("schoolClassNames.ser");
+            ObjectInputStream ois = new ObjectInputStream(fis);
             schoolClassNames = (ArrayList<String>) ois.readObject();
-        }catch (IOException | ClassNotFoundException e){
+            ois.close();
+            fis.close();
+        } catch (FileNotFoundException e) {
+            //ignore
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
-        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("multiplier.ser"))){
+        try {
+            FileInputStream fis = activityContext.openFileInput("multiplier.ser");
+            ObjectInputStream ois = new ObjectInputStream(fis);
             multiplier = (Integer) ois.readObject();
-        }catch (IOException | ClassNotFoundException e){
+            ois.close();
+            fis.close();
+        } catch (FileNotFoundException e) {
+            //ignore
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
