@@ -3,6 +3,7 @@ package com.example.appsenzen;
 import android.os.Bundle;
 
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,14 +53,28 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         editTextPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    preference.setSummary(getString(R.string.pushups_per_skip) + ": " + newValue);
-                    SchoolClassHandler.setMultiplier(new Integer((String)newValue));
+                preference.setSummary(getString(R.string.pushups_per_skip) + ": " + newValue);
+                SchoolClassHandler.setMultiplier(new Integer((String) newValue));
                 return true;
             }
         });
 
-    }
+        final Preference deletePreference = findPreference("delete_all_data");
+        assert deletePreference != null;
 
+        deletePreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener(){
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                DeleteDialog deleteDialog = new DeleteDialog();
+                deleteDialog.show(getParentFragmentManager(), "example delete dialog");
+
+                return true;
+            }
+        });
+
+
+
+    }
 
 
 }

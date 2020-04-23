@@ -12,8 +12,14 @@
             android:inputType="number"
             android:defaultValue="20"
             app:icon="@drawable/ic_arrow_downward_black_24dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            />
+
+    <Preference
+        android:key="delete_all_data"
+        app:title="@string/delete_title"
+        android:summary="@string/delete_summary"
+        app:icon="@drawable/ic_delete_black_24dp"
+        />
 
 
 </PreferenceScreen>

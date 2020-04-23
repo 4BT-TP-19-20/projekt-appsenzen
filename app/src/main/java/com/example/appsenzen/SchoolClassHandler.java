@@ -1,6 +1,11 @@
 package com.example.appsenzen;
 
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.util.Log;
+import androidx.annotation.ArrayRes;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -11,12 +16,21 @@ public abstract class SchoolClassHandler {
 
     private static int multiplier;
 
+    @SuppressLint("StaticFieldLeak")
+    private static Context activityContext;
+
     public static int getMultiplier() {
         return multiplier;
     }
 
     public static void setMultiplier(int multiplier) {
         SchoolClassHandler.multiplier = multiplier;
+
+        saveLists();
+    }
+
+    public static void setActivityContext(Context context) {
+        activityContext = context;
     }
 
     public static void addSchoolClass(SchoolClass schoolClass) {
@@ -24,6 +38,8 @@ public abstract class SchoolClassHandler {
         if (!schoolClasses.contains(schoolClass) && !schoolClassNames.contains(name)) {
             schoolClasses.add(schoolClass);
             schoolClassNames.add(name);
+
+            saveLists();
         }
     }
 
@@ -37,6 +53,8 @@ public abstract class SchoolClassHandler {
 
         schoolClasses.remove(schoolClass);
         schoolClassNames.remove(name);
+
+        saveLists();
     }
 
     public static void removeSchoolClass(String name) {
@@ -44,6 +62,8 @@ public abstract class SchoolClassHandler {
 
         schoolClasses.remove(index);
         schoolClassNames.remove(index);
+
+        saveLists();
     }
 
     public static int getListSize() {
@@ -63,42 +83,80 @@ public abstract class SchoolClassHandler {
         return schoolClasses.get(index);
     }
 
+    public static void clear(){
+        schoolClasses = new ArrayList<>();
+        schoolClassNames = new ArrayList<>();
+        multiplier = 20;
+        saveLists();
+    }
+
     public static void saveLists() {
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("schoolClasses.ser"))){
+        try {
+            FileOutputStream fos = activityContext.openFileOutput("schoolClasses.ser", Context.MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(schoolClasses);
-        }catch (IOException e){
+            oos.close();
+            fos.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("schoolClassNames.ser"))){
+        try {
+            FileOutputStream fos = activityContext.openFileOutput("schoolClassNames.ser", Context.MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(schoolClassNames);
-        }catch (IOException e){
+            oos.close();
+            fos.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("multiplier.ser"))){
+        try {
+            FileOutputStream fos = activityContext.openFileOutput("multiplier.ser", Context.MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(multiplier);
-        }catch (IOException e){
+            oos.close();
+            fos.close();
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void loadLists() {
-        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("schoolClasses.ser"))){
+        try {
+            FileInputStream fis = activityContext.openFileInput("schoolClasses.ser");
+            ObjectInputStream ois = new ObjectInputStream(fis);
             schoolClasses = (ArrayList<SchoolClass>) ois.readObject();
-        }catch (IOException | ClassNotFoundException e){
+            ois.close();
+            fis.close();
+        } catch (FileNotFoundException e) {
+            //ignore
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
-        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("schoolClassNames.ser"))){
+        try {
+            FileInputStream fis = activityContext.openFileInput("schoolClassNames.ser");
+            ObjectInputStream ois = new ObjectInputStream(fis);
             schoolClassNames = (ArrayList<String>) ois.readObject();
-        }catch (IOException | ClassNotFoundException e){
+            ois.close();
+            fis.close();
+        } catch (FileNotFoundException e) {
+            //ignore
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
-        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("multiplier.ser"))){
+        try {
+            FileInputStream fis = activityContext.openFileInput("multiplier.ser");
+            ObjectInputStream ois = new ObjectInputStream(fis);
             multiplier = (Integer) ois.readObject();
-        }catch (IOException | ClassNotFoundException e){
+            ois.close();
+            fis.close();
+        } catch (FileNotFoundException e) {
+            //ignore
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
