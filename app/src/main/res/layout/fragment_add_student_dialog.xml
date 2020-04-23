@@ -1,0 +1,15 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
+
+    <EditText
+            android:id="@+id/edit_student_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/student_name"
+            android:autofillHints="none"
+            android:inputType="textPersonName"/>
+
+
+</RelativeLayout>
