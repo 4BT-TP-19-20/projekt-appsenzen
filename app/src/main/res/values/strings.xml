@@ -10,4 +10,9 @@
     <string name="button_add_class_confirm">Add Class</string>
     <string name="add_class_input">class name</string>
     <string name="class_name">class name</string>
+    <string name="delete_title">Delete all data</string>
+    <string name="delete_summary">Delete all data, this cannot be undone</string>
+    <string name="button_delete_yes">Delete</string>
+    <string name="button_delete_no">Cancel</string>
+    <string name="delete_success">All data has been deleted</string>
 </resources>

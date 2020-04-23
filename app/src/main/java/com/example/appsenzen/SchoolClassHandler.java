@@ -4,6 +4,7 @@ package com.example.appsenzen;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
+import androidx.annotation.ArrayRes;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -83,10 +84,10 @@ public abstract class SchoolClassHandler {
     }
 
     public static void clear(){
-        schoolClasses = null;
-        schoolClassNames = null;
-
-        //saveLists();
+        schoolClasses = new ArrayList<>();
+        schoolClassNames = new ArrayList<>();
+        multiplier = 20;
+        saveLists();
     }
 
     public static void saveLists() {

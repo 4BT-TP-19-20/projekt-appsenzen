@@ -59,6 +59,21 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             }
         });
 
+        final Preference deletePreference = findPreference("delete_all_data");
+        assert deletePreference != null;
+
+        deletePreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener(){
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                DeleteDialog deleteDialog = new DeleteDialog();
+                deleteDialog.show(getParentFragmentManager(), "example delete dialog");
+
+                return true;
+            }
+        });
+
+
+
     }
 
 
