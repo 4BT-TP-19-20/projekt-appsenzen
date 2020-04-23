@@ -55,7 +55,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 preference.setSummary(getString(R.string.pushups_per_skip) + ": " + newValue);
                 SchoolClassHandler.setMultiplier(new Integer((String) newValue));
-                SchoolClassHandler.saveLists();
                 return true;
             }
         });

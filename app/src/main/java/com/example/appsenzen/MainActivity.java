@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
 
         if(SchoolClassHandler.getMultiplier() == 0){
             SchoolClassHandler.setMultiplier(20);
-            SchoolClassHandler.saveLists();
         }
     }
 
