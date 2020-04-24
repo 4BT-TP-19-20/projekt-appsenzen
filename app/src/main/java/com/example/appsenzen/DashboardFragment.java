@@ -1,6 +1,7 @@
 package com.example.appsenzen;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Gravity;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -11,8 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+
+import static android.os.Looper.getMainLooper;
 
 
 public class DashboardFragment extends Fragment {
@@ -28,25 +33,9 @@ public class DashboardFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        TextView currentDateTime = new TextView(getActivity());
 
-        currentTime = Calendar.getInstance().getTime();
-
-        String timeString = currentTime.toString();
-        String[] splitString = timeString.split(" ");
-        timeString = splitString[0] + " " + splitString[1] + " " + splitString[2] + " " + splitString[5] + " " + splitString[3];
-
-        currentDateTime.setText(timeString);
-        currentDateTime.setGravity(Gravity.CENTER);
-
-        LinearLayout linearLayout = view.findViewById(R.id.linearlayout);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        currentDateTime.setLayoutParams(params);
-
-        linearLayout.addView(currentDateTime, params);
-
+        //Create Live Clock on Dashboard
+        liveTime();
 /*
         for(int i = 0; i <= 20; ++i){
             addButton("Button: " + i);
@@ -78,5 +67,34 @@ public class DashboardFragment extends Fragment {
                 Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void liveTime(){
+        TextView currentDateTime = new TextView(getActivity());     //TextView for displaying the live date and time
+
+        //Thread for updating the time every second according to the devices time
+        final Handler liveTimeHandler = new Handler(getMainLooper());
+        liveTimeHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                currentDateTime.setText(new SimpleDateFormat("HH:mm:ss EEE d MMM yyyy", Locale.US).format(new Date()));
+                liveTimeHandler.postDelayed(this, 1000);
+            }
+        }, 10);
+
+        //Styling of the TextView
+        currentDateTime.setGravity(Gravity.CENTER);
+        currentDateTime.setTextSize(20);
+        currentDateTime.setPadding(10,25,10,10);
+
+        //Create layout and parameters for the TextView
+        LinearLayout linearLayout = view.findViewById(R.id.linearlayout);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        currentDateTime.setLayoutParams(params);
+
+        //Add textView to Layout
+        linearLayout.addView(currentDateTime, params);
     }
 }
