@@ -88,13 +88,17 @@ public abstract class SchoolClassHandler {
     }
 
     public static void clear(){
+
+        for(SchoolClass s : schoolClasses){
+            s.clear();
+        }
+
         schoolClasses = new ArrayList<>();
         schoolClassNames = new ArrayList<>();
         multiplier = 20;
         saveLists();
     }
 
-    //TODO pack everything into one try/catch
     public static void saveLists() {
         try {
             FileOutputStream fos = activityContext.openFileOutput("schoolClasses.ser", Context.MODE_PRIVATE);

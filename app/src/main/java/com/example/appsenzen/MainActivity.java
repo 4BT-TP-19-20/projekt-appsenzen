@@ -16,6 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class MainActivity extends AppCompatActivity implements AddClassDialog.addClassDialogListener {
@@ -136,6 +137,13 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
 
         SchoolClassHandler.getTimetable().addLesson("3BT", 5, 3);
         SchoolClassHandler.getTimetable().addLesson("2AT", 5, 4);
+
+        //for testing:
+        //SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        //try{
+        //    SchoolClassHandler.getTimetable().addLesson("4BT", 1, sdf.parse("23:00"), sdf.parse("23:59"));
+        //}catch (ParseException ignored){}
+
     }
 
     //methodes for the menu

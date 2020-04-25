@@ -36,22 +36,27 @@ public class DashboardFragment extends Fragment {
 
         //Create Live Clock on Dashboard
         liveTime();
-/*
-        for(int i = 0; i <= 20; ++i){
-            addButton("Button: " + i);
-        }
 
- */
+        //for testing:
+        //addStudents();
 
         return view;
     }
+
+
 
     @Override
     public void onPause() {
         super.onPause();
     }
 
-    public void addButton(final String s) {
+    private void addStudents(){
+        String className = SchoolClassHandler.getTimetable().getClassName(1, new Date());
+
+        addButton(className);
+    }
+
+    private void addButton(final String s) {
         Button button = new Button(getContext());
         button.setText(s);
         LinearLayout linearLayout = view.findViewById(R.id.linearlayout);
@@ -61,12 +66,7 @@ public class DashboardFragment extends Fragment {
         linearLayout.addView(button, params);
 
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
-            }
-        });
+        button.setOnClickListener(v -> Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show());
     }
 
     private void liveTime(){

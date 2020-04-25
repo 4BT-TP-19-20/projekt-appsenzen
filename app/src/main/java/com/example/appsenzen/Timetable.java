@@ -16,30 +16,37 @@ public class Timetable {
         lessons.add(new Lesson(className, day, lesson));
     }
 
-    public void addLesson(String className, int day, Date lessonStart, Date lessonEnd){
-        lessons.add(new Lesson(className, day, lessonStart ,lessonEnd));
+    public void addLesson(String className, int day, Date lessonStart, Date lessonEnd) {
+        lessons.add(new Lesson(className, day, lessonStart, lessonEnd));
     }
 
-    public void removeLesson(String className, int day){
-        for(Lesson l : lessons){
-            if(l.getClassName().equals(className) && l.getDay() == day){
+    public void removeLesson(String className, int day) {
+        for (Lesson l : lessons) {
+            if (l.getClassName().equals(className) && l.getDay() == day) {
                 lessons.remove(l);
             }
         }
     }
 
-    public String getClassName(int day, Date date) throws ParseException {
+    public String getClassName(int day, Date date) {
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-        Date time = sdf.parse(sdf.format(date));
+        Date time = null;
+
+        try {
+            time = sdf.parse(sdf.format(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
 
         for (Lesson l : lessons) {
-            if(day != l.getDay()){
+            if (day != l.getDay()) {
                 continue;
             }
 
             assert time != null;
-            if (time.after(l.getLessonStart()) && time.before(l.getLessonEnd())){
+            if (time.after(l.getLessonStart()) && time.before(l.getLessonEnd())) {
                 return l.getClassName();
             }
 
