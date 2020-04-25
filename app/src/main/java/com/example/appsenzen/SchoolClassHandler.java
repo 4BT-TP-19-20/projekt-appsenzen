@@ -1,10 +1,7 @@
 package com.example.appsenzen;
 
-
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
-import androidx.annotation.ArrayRes;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -19,6 +16,9 @@ public abstract class SchoolClassHandler {
     @SuppressLint("StaticFieldLeak")
     private static Context activityContext;
 
+    private static Timetable timetable = new Timetable();
+
+
     public static int getMultiplier() {
         return multiplier;
     }
@@ -31,6 +31,10 @@ public abstract class SchoolClassHandler {
 
     public static void setActivityContext(Context context) {
         activityContext = context;
+    }
+
+    public Timetable getTimetable(){
+        return timetable;
     }
 
     public static void addSchoolClass(SchoolClass schoolClass) {
@@ -90,6 +94,7 @@ public abstract class SchoolClassHandler {
         saveLists();
     }
 
+    //TODO pack everything into one try/catch
     public static void saveLists() {
         try {
             FileOutputStream fos = activityContext.openFileOutput("schoolClasses.ser", Context.MODE_PRIVATE);
@@ -115,6 +120,17 @@ public abstract class SchoolClassHandler {
             FileOutputStream fos = activityContext.openFileOutput("multiplier.ser", Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(multiplier);
+            oos.close();
+            fos.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FileOutputStream fos = activityContext.openFileOutput("timetable.ser", Context.MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(timetable);
             oos.close();
             fos.close();
 
@@ -152,6 +168,18 @@ public abstract class SchoolClassHandler {
             FileInputStream fis = activityContext.openFileInput("multiplier.ser");
             ObjectInputStream ois = new ObjectInputStream(fis);
             multiplier = (Integer) ois.readObject();
+            ois.close();
+            fis.close();
+        } catch (FileNotFoundException e) {
+            //ignore
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FileInputStream fis = activityContext.openFileInput("timetable.ser");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            timetable = (Timetable) ois.readObject();
             ois.close();
             fis.close();
         } catch (FileNotFoundException e) {
