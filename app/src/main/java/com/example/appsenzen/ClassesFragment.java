@@ -87,7 +87,7 @@ public class ClassesFragment extends Fragment {
                 }
             });
             existingButtons.add(s);
-            ClassesFragment test = new ClassesFragment();
+
 
         }
     }
@@ -101,6 +101,7 @@ public class ClassesFragment extends Fragment {
         if(listSize > counter) {                                        //1 > 0
             for (int i = counter; i < listSize; i++) {                  //i = 0; 0<1; 2
                 addButton(SchoolClassHandler.getNameByIndex(i));
+
             }
         }
         counter = listSize;

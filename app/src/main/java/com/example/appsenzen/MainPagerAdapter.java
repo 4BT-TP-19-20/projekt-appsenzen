@@ -6,8 +6,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
-public class MainPagerAdapter extends FragmentPagerAdapter {
+public class MainPagerAdapter extends FragmentStatePagerAdapter {
     private final int numOfTabs;
     private final Context context;
 
@@ -52,4 +53,5 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
                 return null;
         }
     }
+
 }

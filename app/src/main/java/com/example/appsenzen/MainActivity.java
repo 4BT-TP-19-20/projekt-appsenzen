@@ -141,6 +141,11 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
         addClassDialog.show(getSupportFragmentManager(), "example dialog");
     }
 
-
+    public void refresh(){
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(getIntent());
+        overridePendingTransition(0, 0);
+    }
 
 }
