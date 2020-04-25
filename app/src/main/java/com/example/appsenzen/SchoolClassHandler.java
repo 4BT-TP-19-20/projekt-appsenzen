@@ -33,7 +33,7 @@ public abstract class SchoolClassHandler {
         activityContext = context;
     }
 
-    public Timetable getTimetable(){
+    public static Timetable getTimetable(){
         return timetable;
     }
 

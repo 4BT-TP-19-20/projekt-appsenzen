@@ -16,11 +16,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity implements AddClassDialog.addClassDialogListener{
+import java.text.SimpleDateFormat;
+
+public class MainActivity extends AppCompatActivity implements AddClassDialog.addClassDialogListener {
     TextView addClassName;
+
     @Override
     public void showToast(String classname) {
-        Toast.makeText(MainActivity.this,"Added '" +classname+"' to classes", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, "Added '" + classname + "' to classes", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -36,19 +39,10 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
         setupTabs();
         setupFloatingButton();
         init();
+        setupTimetable();
     }
 
-    private void init(){
-        SchoolClassHandler.setActivityContext(this);
-
-        SchoolClassHandler.loadLists();
-
-        if(SchoolClassHandler.getMultiplier() == 0){
-            SchoolClassHandler.setMultiplier(20);
-        }
-    }
-
-    private void setupTabs(){
+    private void setupTabs() {
         TabLayout tabLayout = findViewById(R.id.tabs);
         TabItem tabClasses = findViewById(R.id.tab_classes);
         TabItem tabDashboard = findViewById(R.id.tab_dashboard);
@@ -96,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
 
     }
 
-    private void setupFloatingButton(){
+    private void setupFloatingButton() {
         FloatingActionButton buttonAddClass = findViewById(R.id.buttonAddClass);
 
         buttonAddClass.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +102,42 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
         });
     }
 
+    private void init() {
+        SchoolClassHandler.setActivityContext(this);
+
+        SchoolClassHandler.loadLists();
+
+        if (SchoolClassHandler.getMultiplier() == 0) {
+            SchoolClassHandler.setMultiplier(20);
+        }
+    }
+
+    //TODO replace with file
+    private void setupTimetable() {
+        SchoolClassHandler.getTimetable().addLesson("1DT", 1, 1);
+        SchoolClassHandler.getTimetable().addLesson("4BT", 1, 2);
+        SchoolClassHandler.getTimetable().addLesson("1AT", 1, 3);
+        SchoolClassHandler.getTimetable().addLesson("3AT", 1, 5);
+        SchoolClassHandler.getTimetable().addLesson("4AT", 1, 7);
+        SchoolClassHandler.getTimetable().addLesson("5AT", 1, 8);
+
+        SchoolClassHandler.getTimetable().addLesson("3BT", 2, 3);
+        SchoolClassHandler.getTimetable().addLesson("2AT", 2, 4);
+        SchoolClassHandler.getTimetable().addLesson("3AT", 2, 5);
+        SchoolClassHandler.getTimetable().addLesson("5BT", 2, 6);
+
+        SchoolClassHandler.getTimetable().addLesson("4AT", 3, 2);
+        SchoolClassHandler.getTimetable().addLesson("5AT", 3, 5);
+        SchoolClassHandler.getTimetable().addLesson("1AT", 3, 7);
+        SchoolClassHandler.getTimetable().addLesson("4BT", 3, 8);
+
+        SchoolClassHandler.getTimetable().addLesson("5BT", 4, 4);
+        SchoolClassHandler.getTimetable().addLesson("1DT", 4, 6);
+
+        SchoolClassHandler.getTimetable().addLesson("3BT", 5, 3);
+        SchoolClassHandler.getTimetable().addLesson("2AT", 5, 4);
+    }
+
     //methodes for the menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -117,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.settings:
                 openSettingsActivity();
                 return true;
@@ -126,22 +156,22 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
         return super.onOptionsItemSelected(item);
     }
 
-    private void openSettingsActivity(){
+    private void openSettingsActivity() {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 
-    private void openAddClassActivity(){
+    private void openAddClassActivity() {
         Intent intent = new Intent(this, AddClassActivity.class);
         startActivity(intent);
     }
 
-    private void openDialog(){
+    private void openDialog() {
         AddClassDialog addClassDialog = new AddClassDialog();
         addClassDialog.show(getSupportFragmentManager(), "example dialog");
     }
 
-    public void refresh(){
+    public void refresh() {
         finish();
         overridePendingTransition(0, 0);
         startActivity(getIntent());
