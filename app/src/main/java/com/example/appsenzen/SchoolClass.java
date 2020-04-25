@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class SchoolClass implements Serializable {
 
-    private final ArrayList<Student> students = new ArrayList<>();
-    private final ArrayList<String> studentNames = new ArrayList<>();
+    private ArrayList<Student> students = new ArrayList<>();
+    private ArrayList<String> studentNames = new ArrayList<>();
 
     private final String className;
     private int studentCount;
@@ -63,6 +63,11 @@ public class SchoolClass implements Serializable {
     public Student getStudent(String name){
         int index = studentNames.indexOf(name);
         return students.get(index);
+    }
+
+    public void clear(){
+        students = new ArrayList<>();
+        studentNames = new ArrayList<>();
     }
 
 }
