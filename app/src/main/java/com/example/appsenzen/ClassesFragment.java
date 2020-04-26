@@ -88,7 +88,6 @@ public class ClassesFragment extends Fragment {
             });
             existingButtons.add(s);
 
-
         }
     }
 
