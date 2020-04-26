@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -50,7 +51,13 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
             linearLayout.addView(button, params);
 
 
-            button.setOnClickListener(v -> Toast.makeText(SchoolClassActivity.this, s, Toast.LENGTH_SHORT).show());
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(SchoolClassActivity.this, s, Toast.LENGTH_SHORT).show();
+                    openStudent(s);
+                }
+            });
             existingButtons.add(s);
 
 
@@ -73,6 +80,18 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
         AddStudentDialog addStudentDialog = new AddStudentDialog();
         addStudentDialog.setArguments(bundle);
         addStudentDialog.show(getSupportFragmentManager(), "example dialog");
+    }
+
+    private void openStudent(String s){
+        setContentView(R.layout.fragment_student);
+        Bundle bundle = new Bundle();
+        bundle.putString("studentName", s);
+        StudentFragment studentFragment = new StudentFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        studentFragment.setArguments(bundle);
+
+        fragmentManager.beginTransaction().add(R.id.StudentContainer, studentFragment).commit();
+
     }
 
     @Override

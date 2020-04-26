@@ -16,4 +16,7 @@
     <string name="button_delete_yes">Delete</string>
     <string name="button_delete_no">Cancel</string>
     <string name="delete_success">All data has been deleted</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
