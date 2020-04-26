@@ -9,10 +9,9 @@ public class SchoolClass implements Serializable {
     private ArrayList<String> studentNames = new ArrayList<>();
 
     private final String className;
-    private int studentCount;
+    //private int studentCount;
 
     public SchoolClass(String name){
-        this.studentCount = 0;
         this.className = name;
     }
 
@@ -29,7 +28,6 @@ public class SchoolClass implements Serializable {
         if(!students.contains(student) && !studentNames.contains(name)){
             students.add(student);
             studentNames.add(name);
-            ++studentCount;
         }
     }
 
@@ -43,7 +41,6 @@ public class SchoolClass implements Serializable {
             String name = student.getName();
             students.remove(student);
             studentNames.remove(name);
-            --studentCount;
         }
     }
 
@@ -52,7 +49,6 @@ public class SchoolClass implements Serializable {
             int index = studentNames.indexOf(name);
             students.remove(index);
             studentNames.remove(index);
-            --studentCount;
         }
     }
 
