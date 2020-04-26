@@ -51,7 +51,8 @@ public class DashboardFragment extends Fragment {
     }
 
     private void addStudents(){
-        String className = SchoolClassHandler.getTimetable().getClassName(1, new Date());
+        SimpleDateFormat sdf = new SimpleDateFormat("u");
+        String className = SchoolClassHandler.getTimetable().getClassName(new Integer(sdf.format(new Date())), new Date());
 
         addButton(className);
     }
