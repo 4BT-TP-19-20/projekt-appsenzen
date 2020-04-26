@@ -9,9 +9,8 @@ public class SchoolClass implements Serializable {
     private ArrayList<String> studentNames = new ArrayList<>();
 
     private final String className;
-    //private int studentCount;
 
-    public SchoolClass(String name){
+    public SchoolClass(String name) {
         this.className = name;
     }
 
@@ -23,45 +22,58 @@ public class SchoolClass implements Serializable {
         return students.size();
     }
 
-    public void addStudent(Student student){
+    public void addStudent(Student student) {
         String name = student.getName();
-        if(!students.contains(student) && !studentNames.contains(name)){
+        student.setSchoolClass(this);
+        if (!students.contains(student) && !studentNames.contains(name)) {
             students.add(student);
             studentNames.add(name);
+
+            SchoolClassHandler.saveLists();
         }
     }
 
-    public void addStudent(String name){
+    public void addStudent(String name) {
         Student student = new Student(name, this);
         addStudent(student);
     }
 
-    public void removeStudent(Student student){
-        if(students.contains(student)){
-            String name = student.getName();
-            students.remove(student);
-            studentNames.remove(name);
-        }
+    public void removeStudent(Student student) {
+        String name = student.getName();
+
+        students.remove(student);
+        studentNames.remove(name);
+
+        SchoolClassHandler.saveLists();
     }
 
-    public void removeStudent(String name){
-        if(studentNames.contains(name)){
-            int index = studentNames.indexOf(name);
-            students.remove(index);
-            studentNames.remove(index);
-        }
+    public void removeStudent(String name) {
+        int index = studentNames.indexOf(name);
+
+        students.remove(index);
+        studentNames.remove(index);
+
+        SchoolClassHandler.saveLists();
     }
 
-    public Student getStudent(int index){
+    public Student getStudent(int index) {
         return students.get(index);
     }
 
-    public Student getStudent(String name){
+    public Student getStudent(String name) {
         int index = studentNames.indexOf(name);
         return students.get(index);
     }
 
-    public void clear(){
+    public String getName(int index){
+        return studentNames.get(index);
+    }
+
+    public boolean contains(String name) {
+        return studentNames.contains(name);
+    }
+
+    public void clear() {
         students = new ArrayList<>();
         studentNames = new ArrayList<>();
     }
