@@ -14,8 +14,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.Objects;
 
+
 public class SchoolClassActivity extends AppCompatActivity implements AddStudentDialog.addStudentDialogListener{
     private static final ArrayList<String> existingButtons = new ArrayList<>();
+    private static final ArrayList<String> studentsToAdd = new ArrayList<>();
     int counter = 0;
     public String setName = "";
     @Override
@@ -38,28 +40,20 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
     }
     public void addButton(final String s) {
 
-        if(!existingButtons.contains(s)) {
+
             Button button = new Button(this);
             button.setText(s);
-            LinearLayout linearLayout = findViewById(R.id.linearlayout);
+            LinearLayout linearLayout = findViewById(R.id.lineareslayout);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT);
             linearLayout.addView(button, params);
 
 
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-
-                    Toast.makeText(SchoolClassActivity.this, s, Toast.LENGTH_SHORT).show();
-
-                }
-            });
+            button.setOnClickListener(v -> Toast.makeText(SchoolClassActivity.this, s, Toast.LENGTH_SHORT).show());
             existingButtons.add(s);
 
-        }
+
     }
     private void setupFloatingButton(){
         FloatingActionButton buttonAddClass = findViewById(R.id.buttonAddStudent);
@@ -78,24 +72,23 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
         bundle.putString("className", setName);
         AddStudentDialog addStudentDialog = new AddStudentDialog();
         addStudentDialog.setArguments(bundle);
-        addStudentDialog.show(getSupportFragmentManager(), "example dialogg");
+        addStudentDialog.show(getSupportFragmentManager(), "example dialog");
     }
 
     @Override
-    public void onResume() {
+    public void onResume() {                //Gets called when clicking on a "Class" button
         super.onResume();
-
-        int listSize = SchoolClassHandler.getListSize();                //1
-
+        int listSize = SchoolClassHandler.getSchoolClass(setName).getStudentCount();              //1
         if(listSize > counter) {                                        //1 > 0
             for (int i = counter; i < listSize; i++) {                  //i = 0; 0<1; 2
-                addButton(SchoolClassHandler.getNameByIndex(i));
+                addButton(SchoolClassHandler.getSchoolClass(setName).getStudent(i).getName());
             }
         }
         counter = listSize;
     }
-    public void onPause() {
+    public void onStop() {
         super.onPause();
+        Toast.makeText(SchoolClassActivity.this,"onStop", Toast.LENGTH_SHORT).show();
         counter = 0;
 
     }
@@ -103,6 +96,10 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
     public void showToast(String studentName) {
         Toast.makeText(SchoolClassActivity.this,"Added '" +studentName+"' to classes", Toast.LENGTH_SHORT).show();
         addButton(studentName);
+        studentsToAdd.add(studentName);
+        addStudent(studentName);
     }
-
+    private void addStudent(String name){
+        SchoolClassHandler.getSchoolClass(setName).addStudent(name);
+    }
 }

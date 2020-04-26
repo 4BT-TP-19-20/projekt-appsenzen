@@ -21,7 +21,7 @@ public class SchoolClass implements Serializable {
     }
 
     public int getStudentCount() {
-        return studentCount;
+        return students.size();
     }
 
     public void addStudent(Student student){
