@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
@@ -44,7 +45,7 @@ public class AddStudentDialog extends AppCompatDialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String studentName = editText.getText().toString();
-                SchoolClassHandler.getSchoolClass(className).addStudent(studentName);
+
                 listener.showToast(studentName);
 
             }
