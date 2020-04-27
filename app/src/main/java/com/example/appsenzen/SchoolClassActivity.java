@@ -1,9 +1,7 @@
 package com.example.appsenzen;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +12,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Objects;
-
 
 public class SchoolClassActivity extends AppCompatActivity implements AddStudentDialog.addStudentDialogListener{
     private static final ArrayList<String> existingButtons = new ArrayList<>();
@@ -89,8 +86,6 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
         StudentFragment studentFragment = new StudentFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         studentFragment.setArguments(bundle);
-
-        fragmentManager.beginTransaction().add(R.id.StudentContainer, studentFragment).commit();
 
     }
 
