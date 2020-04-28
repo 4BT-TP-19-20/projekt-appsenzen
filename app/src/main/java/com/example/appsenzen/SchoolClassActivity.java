@@ -1,5 +1,6 @@
 package com.example.appsenzen;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -16,6 +17,7 @@ import java.util.Objects;
 public class SchoolClassActivity extends AppCompatActivity implements AddStudentDialog.addStudentDialogListener{
     private static final ArrayList<String> existingButtons = new ArrayList<>();
     private static final ArrayList<String> studentsToAdd = new ArrayList<>();
+    public static final String EXTRA_MESSAGE = "com.example.appsenzen.MESSAGE";
     int counter = 0;
     public String setName = "";
     @Override
@@ -80,12 +82,17 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
     }
 
     private void openStudent(String s){
-        setContentView(R.layout.fragment_student);
+        /*setContentView(R.layout.fragment_student);
         Bundle bundle = new Bundle();
         bundle.putString("studentName", s);
         StudentFragment studentFragment = new StudentFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        studentFragment.setArguments(bundle);
+        studentFragment.setArguments(bundle);*/
+
+        Intent intent = new Intent(this, StudentActivity.class);
+        String message = s + ";" + setName;
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
 
     }
 
