@@ -88,9 +88,9 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
         startActivity(intent);
     }
 
-    @Override
-    public void onResume() {                //Gets called when clicking on a "Class" button
-        super.onResume();
+
+    public void onCreate() {                //Gets called when clicking on a "Class" button
+
         int listSize = SchoolClassHandler.getSchoolClass(setName).getStudentCount();              //1
         if(listSize > counter) {                                        //1 > 0
             for (int i = counter; i < listSize; i++) {                  //i = 0; 0<1; 2
@@ -102,9 +102,16 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
     public void onStop() {
         super.onPause();
         Toast.makeText(SchoolClassActivity.this,"onStop", Toast.LENGTH_SHORT).show();
-        counter = 0;
+        //counter = 0;
 
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //counter = 0;
+    }
+
     @Override
     public void showToast(String studentName) {
         Toast.makeText(SchoolClassActivity.this,"Added '" +studentName+"' to classes", Toast.LENGTH_SHORT).show();
