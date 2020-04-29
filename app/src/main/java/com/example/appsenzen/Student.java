@@ -1,6 +1,9 @@
 package com.example.appsenzen;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class Student implements Serializable {
     private final String name;
@@ -8,6 +11,7 @@ public class Student implements Serializable {
     private int remainingPushups;
     private SchoolClass schoolClass;
     private String myMissingLog;        //Do schreibmo oanfoch olm wenn oaner fahlt
+    public static final ArrayList<Date> missedDays = new ArrayList<>();
 
 
     public Student(String name, SchoolClass schoolClass){
@@ -44,5 +48,12 @@ public class Student implements Serializable {
 
     public void clearPushups(){
         remainingPushups = 0;
+    }
+
+    public void addAbsence(){
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        System.out.println(formatter.format(date));
+        missedDays.add(date);
     }
 }

@@ -83,9 +83,10 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
     }
 
     private void openStudent(String s){
-        setContentView(R.layout.fragment_student);
+        setContentView(R.layout.activity_school_class);
         Bundle bundle = new Bundle();
         bundle.putString("studentName", s);
+        bundle.putString("studentClass", setName);
         StudentFragment studentFragment = new StudentFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         studentFragment.setArguments(bundle);
