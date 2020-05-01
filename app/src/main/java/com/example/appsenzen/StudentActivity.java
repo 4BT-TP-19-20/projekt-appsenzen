@@ -35,7 +35,7 @@ public class StudentActivity extends AppCompatActivity {
         missingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                currentStudent.addPushups(20);
+                currentStudent.addPushups(SchoolClassHandler.getMultiplier());
                 update();
             }
         });
