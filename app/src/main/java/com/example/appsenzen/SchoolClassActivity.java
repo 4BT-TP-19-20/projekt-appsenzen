@@ -8,7 +8,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -20,6 +19,7 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
     public static final String EXTRA_MESSAGE = "com.example.appsenzen.MESSAGE";
     int counter = 0;
     public String setName = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +39,6 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
 
     }
     public void addButton(final String s) {
-
 
             Button button = new Button(this);
             button.setText(s);

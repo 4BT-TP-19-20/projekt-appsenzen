@@ -37,6 +37,10 @@ public class Student implements Serializable {
         return remainingPushups;
     }
 
+    public String getLog(){
+        return myMissingLog;
+    }
+
     public void addPushups(int pushups){
         remainingPushups += pushups;
         totalPushups += pushups;
