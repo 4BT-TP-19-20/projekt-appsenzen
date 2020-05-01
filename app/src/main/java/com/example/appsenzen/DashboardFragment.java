@@ -78,7 +78,7 @@ public class DashboardFragment extends Fragment {
         liveTimeHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                currentDateTime.setText(new SimpleDateFormat("HH:mm:ss EEE d MMM yyyy", Locale.US).format(new Date()));
+                currentDateTime.setText(new SimpleDateFormat("HH:mm:ss EEE d MMM yyyy", Locale.GERMANY).format(new Date()));
                 liveTimeHandler.postDelayed(this, 1000);
             }
         }, 10);

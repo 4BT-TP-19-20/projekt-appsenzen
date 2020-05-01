@@ -1,7 +1,10 @@
 package com.example.appsenzen;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +30,15 @@ public class StudentActivity extends AppCompatActivity {
         String message = intent.getStringExtra(SchoolClassActivity.EXTRA_MESSAGE);
 
         setViews(message);
+
+        Button missingButton = findViewById(R.id.missingButton);
+        missingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentStudent.addPushups(20);
+                update();
+            }
+        });
     }
 
     @Override
@@ -51,8 +63,7 @@ public class StudentActivity extends AppCompatActivity {
 
         currentStudent = SchoolClassHandler.getSchoolClass(studentClass).getStudent(studentName);
 
-        TextView textViewPushups = findViewById(R.id.textViewPushups);
-        textViewPushups.setText(String.valueOf(currentStudent.getRemainingPushups()));
+        updatePushups();
 
         updateLog();
     }
@@ -64,5 +75,16 @@ public class StudentActivity extends AppCompatActivity {
         } else {
             textViewLog.setText(currentStudent.getLog());
         }
+    }
+
+    private void updatePushups(){
+        TextView textViewPushups = findViewById(R.id.textViewPushups);
+        textViewPushups.setText(String.valueOf(currentStudent.getRemainingPushups()));
+    }
+
+    private void update(){
+        currentStudent.logMissing(currentStudent.getName());
+        updateLog();
+        updatePushups();
     }
 }

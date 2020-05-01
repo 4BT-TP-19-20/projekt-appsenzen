@@ -1,6 +1,9 @@
 package com.example.appsenzen;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class Student implements Serializable {
     private final String name;
@@ -15,6 +18,7 @@ public class Student implements Serializable {
         this.totalPushups = 0;
         this.remainingPushups = 0;
         this.schoolClass = schoolClass;
+
     }
 
     public String getName() {
@@ -48,5 +52,15 @@ public class Student implements Serializable {
 
     public void clearPushups(){
         remainingPushups = 0;
+    }
+
+    public void logMissing(String name){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss d MMM yyyy", Locale.GERMANY);
+        if(myMissingLog == null){
+            myMissingLog = dateFormat.format(new Date()) + " " + name + " missed an hour!\n";
+        } else {
+            myMissingLog += dateFormat.format(new Date()) + " " + name + " missed an hour!\n";
+        }
+
     }
 }
