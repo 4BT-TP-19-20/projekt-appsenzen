@@ -1,6 +1,5 @@
 package com.example.appsenzen;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,6 +36,15 @@ public class StudentActivity extends AppCompatActivity {
             public void onClick(View v) {
                 currentStudent.addPushups(SchoolClassHandler.getMultiplier());
                 update();
+            }
+        });
+
+        Button pushupsdoneButton = findViewById(R.id.pushupsdoneButton);
+        pushupsdoneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentStudent.clearPushups();
+                updatePushups();
             }
         });
     }
