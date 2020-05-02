@@ -33,7 +33,7 @@ public abstract class SchoolClassHandler {
         activityContext = context;
     }
 
-    public static Timetable getTimetable(){
+    public static Timetable getTimetable() {
         return timetable;
     }
 
@@ -75,7 +75,7 @@ public abstract class SchoolClassHandler {
     }
 
     public static String getNameByIndex(int index) {
-        return schoolClasses.get(index).getClassName();
+        return schoolClassNames.get(index);
     }
 
     public static SchoolClass getSchoolClass(int index) {
@@ -87,9 +87,13 @@ public abstract class SchoolClassHandler {
         return schoolClasses.get(index);
     }
 
-    public static void clear(){
+    public static boolean contains(String name){
+        return schoolClassNames.contains(name);
+    }
 
-        for(SchoolClass s : schoolClasses){
+    public static void clear() {
+
+        for (SchoolClass s : schoolClasses) {
             s.clear();
         }
 

@@ -54,4 +54,14 @@ public class Timetable {
 
         return "";
     }
+
+    public Lesson getLesson(String className, int day){
+        for (Lesson l : lessons) {
+            if (l.getClassName().equals(className) && l.getDay() == day) {
+                return l;
+            }
+        }
+
+        return null;
+    }
 }

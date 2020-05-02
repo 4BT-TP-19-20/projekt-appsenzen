@@ -91,4 +91,38 @@ public class Lesson {
     public Date getLessonEnd() {
         return lessonEnd;
     }
+
+    public int getLessonNumber() {
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+
+        try {
+            if (lessonStart.after(sdf.parse("07:50")) && lessonEnd.before(sdf.parse("08:40"))){
+                return 1;
+            }else if(lessonStart.after(sdf.parse("08:40")) && lessonEnd.before(sdf.parse("09:35"))){
+                return 2;
+            }else if(lessonStart.after(sdf.parse("09:30")) && lessonEnd.before(sdf.parse("10:25"))){
+                return 3;
+            }else if(lessonStart.after(sdf.parse("10:25")) && lessonEnd.before(sdf.parse("11:15"))){
+                return 4;
+            }else if(lessonStart.after(sdf.parse("11:30")) && lessonEnd.before(sdf.parse("12:20"))){
+                return 5;
+            }else if(lessonStart.after(sdf.parse("12:20")) && lessonEnd.before(sdf.parse("13:10"))){
+                return 6;
+            }else if(lessonStart.after(sdf.parse("14:10")) && lessonEnd.before(sdf.parse("15:00"))){
+                return 7;
+            }else if(lessonStart.after(sdf.parse("15:00")) && lessonEnd.before(sdf.parse("15:50"))){
+                return 8;
+            }else if(lessonStart.after(sdf.parse("15:50")) && lessonEnd.before(sdf.parse("16:40"))){
+                return 9;
+            }else{
+                return 0;
+            }
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
 }
