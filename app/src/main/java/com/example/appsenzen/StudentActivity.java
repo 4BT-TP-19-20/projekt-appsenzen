@@ -1,6 +1,7 @@
 package com.example.appsenzen;
 
 import android.content.Intent;
+import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -78,6 +79,7 @@ public class StudentActivity extends AppCompatActivity {
 
     private void updateLog(){
         TextView textViewLog = findViewById(R.id.textViewLog);
+        textViewLog.setMovementMethod(new ScrollingMovementMethod());
         if(currentStudent.getLog() == null){
             textViewLog.setText("Never Missed an Hour!");
         } else {

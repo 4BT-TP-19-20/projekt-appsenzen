@@ -55,7 +55,7 @@ public class Student implements Serializable {
     }
 
     public void logMissing(String name){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss d MMM yyyy", Locale.GERMANY);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm d MMM yyyy", Locale.GERMANY);
         if(myMissingLog == null){
             myMissingLog = dateFormat.format(new Date()) + " " + name + " missed an hour!\n";
         } else {
