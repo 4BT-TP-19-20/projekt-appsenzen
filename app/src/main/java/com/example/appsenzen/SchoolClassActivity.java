@@ -35,7 +35,10 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
             setName = getIntent().getStringExtra("currentClassName");
             Objects.requireNonNull(getSupportActionBar()).setTitle(setName);
         }
+
         setupFloatingButton();
+
+        addStudentButton();
 
     }
     public void addButton(final String s) {
@@ -49,12 +52,9 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
             linearLayout.addView(button, params);
 
 
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(SchoolClassActivity.this, s, Toast.LENGTH_SHORT).show();
-                    openStudent(s);
-                }
+            button.setOnClickListener(v -> {
+                Toast.makeText(SchoolClassActivity.this, s, Toast.LENGTH_SHORT).show();
+                openStudent(s);
             });
             existingButtons.add(s);
 
@@ -63,13 +63,7 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
     private void setupFloatingButton(){
         FloatingActionButton buttonAddClass = findViewById(R.id.buttonAddStudent);
 
-        buttonAddClass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDialog();
-
-            }
-        });
+        buttonAddClass.setOnClickListener(v -> openDialog());
     }
 
     private void openDialog(){
@@ -87,8 +81,7 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
         startActivity(intent);
     }
 
-
-    public void onCreate() {                //Gets called when clicking on a "Class" button
+    public void addStudentButton() {                //Gets called when clicking on a "Class" button
 
         int listSize = SchoolClassHandler.getSchoolClass(setName).getStudentCount();              //1
         if(listSize > counter) {                                        //1 > 0
@@ -98,6 +91,8 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
         }
         counter = listSize;
     }
+
+    @Override
     public void onStop() {
         super.onPause();
         Toast.makeText(SchoolClassActivity.this,"onStop", Toast.LENGTH_SHORT).show();
