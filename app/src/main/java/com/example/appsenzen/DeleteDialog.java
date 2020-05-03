@@ -3,11 +3,9 @@ package com.example.appsenzen;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,18 +28,12 @@ public class DeleteDialog extends AppCompatDialogFragment {
         View view = inflater.inflate(R.layout.dialog_delete, null);
 
         builder.setView(view).setTitle(R.string.delete_title
-        ).setPositiveButton(R.string.button_delete_yes, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                SchoolClassHandler.clear();
-                Objects.requireNonNull(getActivity()).finish();
-                Toast.makeText(getActivity(), R.string.delete_success, Toast.LENGTH_LONG).show();
-            }
-        }).setNegativeButton(R.string.button_delete_no, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //nothing
-            }
+        ).setPositiveButton(R.string.button_delete_yes, (dialog, which) -> {
+            SchoolClassHandler.clear();
+            Objects.requireNonNull(getActivity()).finish();
+            Toast.makeText(getActivity(), R.string.delete_success, Toast.LENGTH_LONG).show();
+        }).setNegativeButton(R.string.button_delete_no, (dialog, which) -> {
+            //nothing
         });
 
         return builder.create();

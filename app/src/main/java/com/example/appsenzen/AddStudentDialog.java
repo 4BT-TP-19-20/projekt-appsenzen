@@ -12,10 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import java.util.Objects;
+
 public class AddStudentDialog extends AppCompatDialogFragment {
     private EditText editText ;
     private addStudentDialogListener listener;
-    private String className;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -32,28 +33,23 @@ public class AddStudentDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        LayoutInflater inflater = getActivity().getLayoutInflater();
+        LayoutInflater inflater = requireActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_add_student,null);
-        className = getArguments().getString("className");
-        builder.setView(view).setTitle("Add Student").setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        assert getArguments() != null;
+        builder.setView(view).setTitle("Add Student").setNegativeButton("Cancel", (dialog, which) -> {
 
-            }
-        }).setPositiveButton("Add", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String studentName = editText.getText().toString();
+        }).setPositiveButton("Add", (dialog, which) -> {
+            String studentName = editText.getText().toString();
 
-                listener.showToast(studentName);
+            listener.showToast(studentName);
 
-            }
         });
 
         editText = view.findViewById(R.id.edit_student_name);
 
         return builder.create();
     }
+
     public interface addStudentDialogListener{
         void showToast(String studentName);
     }
