@@ -1,7 +1,6 @@
 package com.example.appsenzen;
 
 import android.content.Intent;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -61,7 +60,7 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
 
     }
     private void setupFloatingButton(){
-        FloatingActionButton buttonAddClass = findViewById(R.id.buttonAddStudent);
+        FloatingActionButton buttonAddClass = findViewById(R.id.button_add_student);
 
         buttonAddClass.setOnClickListener(v -> openDialog());
     }

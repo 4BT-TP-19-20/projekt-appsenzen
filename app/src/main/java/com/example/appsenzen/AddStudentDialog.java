@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
@@ -34,7 +33,7 @@ public class AddStudentDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.fragment_add_student_dialog,null);
+        View view = inflater.inflate(R.layout.dialog_add_student,null);
         className = getArguments().getString("className");
         builder.setView(view).setTitle("Add Student").setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override

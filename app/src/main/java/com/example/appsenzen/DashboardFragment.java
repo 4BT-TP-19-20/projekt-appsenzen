@@ -41,8 +41,6 @@ public class DashboardFragment extends Fragment {
         liveTime();
         textView = view.findViewById(R.id.currentLessonText);
         checkCurrentLesson();
-        //for testing:
-        //addStudents();
 
         return view;
     }

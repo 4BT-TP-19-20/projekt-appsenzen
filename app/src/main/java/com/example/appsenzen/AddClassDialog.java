@@ -32,7 +32,7 @@ public class AddClassDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_dialog,null);
+        View view = inflater.inflate(R.layout.dialog_add_class,null);
 
         builder.setView(view).setTitle("Add Class").setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
