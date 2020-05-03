@@ -1,9 +1,7 @@
 package com.example.appsenzen;
 
-import android.content.Intent;
-import android.view.Menu;
+
 import android.view.MenuItem;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;

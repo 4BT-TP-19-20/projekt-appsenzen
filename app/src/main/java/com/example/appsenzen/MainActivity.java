@@ -1,37 +1,27 @@
 package com.example.appsenzen;
 
-
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 public class MainActivity extends AppCompatActivity implements AddClassDialog.addClassDialogListener {
-    TextView addClassName;
-
-    @Override
-    public void showToast(String classname) {
-        Toast.makeText(MainActivity.this, "Added '" + classname + "' to classes", Toast.LENGTH_SHORT).show();
-    }
+    private static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        context = this;
 
         //sets the created toolbar as the actionbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -45,9 +35,6 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
 
     private void setupTabs() {
         TabLayout tabLayout = findViewById(R.id.tabs);
-        TabItem tabClasses = findViewById(R.id.tab_classes);
-        TabItem tabDashboard = findViewById(R.id.tab_dashboard);
-        TabItem tabTimetable = findViewById(R.id.tab_timetable);
 
         final MainPagerAdapter mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager(), this, tabLayout.getTabCount());
 
@@ -56,51 +43,15 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
 
         tabLayout.setupWithViewPager(viewPager);
 
-        //delete if this causes problems
-        //possible keeps all 3 tabs loaded
-        //viewPager.setOffscreenPageLimit(2);
-
         //selects the second tab
         tabLayout.selectTab(tabLayout.getTabAt(1));
-
-        //use this if you want to implemet a color changing toolbar
-        /*
-        //adds listener to change tab selection when swiping between pages
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-        //changes pages when a tab is clicked
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-                //pageAdapter.getItem(tab.getPosition()).onResume();
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                //pageAdapter.getItem(tab.getPosition()).onPause();
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
-         */
 
     }
 
     private void setupFloatingButton() {
-        FloatingActionButton buttonAddClass = findViewById(R.id.buttonAddClass);
+        FloatingActionButton buttonAddClass = findViewById(R.id.button_add_class);
 
-        buttonAddClass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //openAddClassActivity();
-                openDialog();
-            }
-        });
+        buttonAddClass.setOnClickListener(v -> openDialog());
     }
 
     private void init() {
@@ -164,19 +115,23 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
         return super.onOptionsItemSelected(item);
     }
 
-    private void openSettingsActivity() {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
+    @Override
+    public void showToast(String classname) {
+        Toast.makeText(MainActivity.this, "Added '" + classname + "' to classes", Toast.LENGTH_SHORT).show();
     }
 
-    private void openAddClassActivity() {
-        Intent intent = new Intent(this, AddClassActivity.class);
+    private void openSettingsActivity() {
+        Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 
     private void openDialog() {
         AddClassDialog addClassDialog = new AddClassDialog();
         addClassDialog.show(getSupportFragmentManager(), "example dialog");
+    }
+
+    public static Context getContext(){
+        return context;
     }
 
     public void refresh() {

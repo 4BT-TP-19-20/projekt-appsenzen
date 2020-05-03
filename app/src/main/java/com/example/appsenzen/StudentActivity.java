@@ -3,9 +3,9 @@ package com.example.appsenzen;
 import android.content.Intent;
 import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
@@ -29,24 +29,19 @@ public class StudentActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String message = intent.getStringExtra(SchoolClassActivity.EXTRA_MESSAGE);
 
+        assert message != null;
         setViews(message);
 
         Button missingButton = findViewById(R.id.missingButton);
-        missingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                currentStudent.addPushups(SchoolClassHandler.getMultiplier());
-                update();
-            }
+        missingButton.setOnClickListener(v -> {
+            currentStudent.addPushups(SchoolClassHandler.getMultiplier());
+            addMissedHour();
         });
 
         Button pushupsdoneButton = findViewById(R.id.pushupsdoneButton);
-        pushupsdoneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                currentStudent.clearPushups();
-                updatePushups();
-            }
+        pushupsdoneButton.setOnClickListener(v -> {
+            currentStudent.clearPushups();
+            updatePushups();
         });
     }
 
@@ -57,6 +52,7 @@ public class StudentActivity extends AppCompatActivity {
                 onBackPressed();
                 return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -65,9 +61,9 @@ public class StudentActivity extends AppCompatActivity {
         String studentName = infos[0];
         String studentClass = infos[1];
 
-        TextView textViewName = findViewById(R.id.textViewName);
+        TextView textViewName = findViewById(R.id.text_name);
         textViewName.setText(studentName);
-        TextView textViewClass = findViewById(R.id.textViewClass);
+        TextView textViewClass = findViewById(R.id.text_class);
         textViewClass.setText(studentClass);
 
         currentStudent = SchoolClassHandler.getSchoolClass(studentClass).getStudent(studentName);
@@ -78,7 +74,7 @@ public class StudentActivity extends AppCompatActivity {
     }
 
     private void updateLog(){
-        TextView textViewLog = findViewById(R.id.textViewLog);
+        TextView textViewLog = findViewById(R.id.list_missing_log);
         textViewLog.setMovementMethod(new ScrollingMovementMethod());
         if(currentStudent.getLog() == null){
             textViewLog.setText("Never Missed an Hour!");
@@ -92,8 +88,8 @@ public class StudentActivity extends AppCompatActivity {
         textViewPushups.setText(String.valueOf(currentStudent.getRemainingPushups()));
     }
 
-    private void update(){
-        currentStudent.logMissing(currentStudent.getName());
+    private void addMissedHour(){
+        currentStudent.addMissedHour();
         updateLog();
         updatePushups();
     }

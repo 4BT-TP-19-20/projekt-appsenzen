@@ -5,7 +5,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 public class MainPagerAdapter extends FragmentStatePagerAdapter {
@@ -26,10 +25,9 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
                 return new ClassesFragment();
             case 1:
                 return new DashboardFragment();
-            case 2:
-                return new TimetableFragment();
             default:
-                return null;
+                //if the number is >= 2
+                return new TimetableFragment();
         }
     }
 

@@ -12,8 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import java.util.Objects;
+
 public class AddClassDialog extends AppCompatDialogFragment {
-    private EditText editText ;
+    private EditText editText;
     private addClassDialogListener listener;
 
     @Override
@@ -31,22 +33,15 @@ public class AddClassDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_dialog,null);
+        LayoutInflater inflater = requireActivity().getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialog_add_class, null);
 
-        builder.setView(view).setTitle("Add Class").setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        builder.setView(view).setTitle("Add Class").setNegativeButton("Cancel", (dialog, which) -> {
 
-            }
-        }).setPositiveButton("Add", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String classname = editText.getText().toString();
-                SchoolClassHandler.addSchoolClass(classname);
-                listener.showToast(classname);
-                //((MainActivity)getActivity()).refresh();
-            }
+        }).setPositiveButton("Add", (dialog, which) -> {
+            String classname = editText.getText().toString().toUpperCase();
+            SchoolClassHandler.addSchoolClass(classname);
+            listener.showToast(classname);
         });
 
         editText = view.findViewById(R.id.edit_class_name);
@@ -54,7 +49,7 @@ public class AddClassDialog extends AppCompatDialogFragment {
         return builder.create();
     }
 
-    public interface addClassDialogListener{
+    public interface addClassDialogListener {
         void showToast(String classname);
     }
 }
