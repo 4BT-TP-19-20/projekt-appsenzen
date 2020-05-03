@@ -52,7 +52,7 @@ public class SchoolClassActivity extends AppCompatActivity implements AddStudent
 
 
         button.setOnClickListener(v -> {
-            Toast.makeText(SchoolClassActivity.this, s, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(SchoolClassActivity.this, s, Toast.LENGTH_SHORT).show();
             openStudent(s);
         });
         existingButtons.add(s);

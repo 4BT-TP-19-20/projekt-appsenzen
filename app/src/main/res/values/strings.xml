@@ -12,21 +12,10 @@
     <string name="button_delete_yes">Delete</string>
     <string name="button_delete_no">Cancel</string>
     <string name="delete_success">All data has been deleted</string>
-
-
-
-    <string name="add_class">Add Class</string>
-
     <string name="pushups_per_skip">Pushups/Skipped lesson</string>
 
-    <string name="add_class_prompt">Please enter the following:</string>
-
-    <string name="button_add_class_confirm">Add Class</string>
-
-    <string name="add_class_input">class name</string>
-
-    <string name="class_name">class name</string>
-
+    <!-- Student Screen -->
+    <string name="add_class">Add Class</string>
     <string name="title_student">Student</string>
     <string name="student_name">Student Name</string>
     <string name="student_class">Class</string>
@@ -34,7 +23,9 @@
     <string name="missing_today">Missing today</string>
     <string name="pushups_done">Pushups done</string>
     <string name="missing_log">Missing log</string>
-    <string name="no_class">No class</string>
 
+    <!-- Other -->
+    <string name="no_class">No class</string>
+    <string name="class_name">Class name</string>
 
 </resources>

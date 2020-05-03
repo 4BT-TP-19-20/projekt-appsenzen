@@ -59,7 +59,7 @@ public class ClassesFragment extends Fragment {
 
             button.setOnClickListener(v -> {
 
-                Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), SchoolClassActivity.class);
                 intent.putExtra("currentClassName", s);
                 Objects.requireNonNull(getActivity()).startActivity(intent);

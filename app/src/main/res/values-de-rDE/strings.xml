@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- General names -->
     <string name="app_name">AppSenzen</string>
     <string name="menu_settings">Einstellungen</string>
     <string name="tab_classes">Klassen</string>
     <string name="tab_dashboard">Dashboard</string>
     <string name="tab_timetable">Stundenplan</string>
-    <string name="add_class">Klasse hinzufügen</string>
-    <string name="pushups_per_skip">Liegestütze/Fehlstunde</string>
-    <string name="add_class_prompt">Bitte gib folgendes ein:</string>
-    <string name="button_add_class_confirm">Klasse hinzufügen</string>
-    <string name="add_class_input">Klassenname</string>
-    <string name="class_name">Klassenname</string>
-    <string name="student_name">Schülername</string>
+
+    <!-- Settings Menu -->
     <string name="delete_title">Alle Daten löschen</string>
     <string name="delete_summary">Alle Daten löschen, dies kann nicht rückgängig gemacht werden</string>
     <string name="button_delete_yes">Löschen</string>
     <string name="button_delete_no">Abbrechen</string>
     <string name="delete_success">Alle Daten wurden gelöscht</string>
+    <string name="pushups_per_skip">Liegestütze/Fehlstunde</string>
+
+    <!-- Student Screen -->
+    <string name="add_class">Klasse hinzufügen</string>
+    <string name="student_name">Schülername</string>
     <string name="title_student">Schüler</string>
     <string name="student_class">Klasse</string>
     <string name="pushups_to_do">Fehlende Liegestütze</string>
     <string name="missing_today">Fehlt heute</string>
     <string name="pushups_done">Liegestütze erledigt</string>
     <string name="missing_log">Fehlstunden Verlauf</string>
+
+    <!-- Other -->
     <string name="no_class">Keine Klasse</string>
+    <string name="class_name">Klassenname</string>
+
 </resources>
