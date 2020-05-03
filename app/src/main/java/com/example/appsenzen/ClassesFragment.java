@@ -17,7 +17,7 @@ public class ClassesFragment extends Fragment {
 
     private static final ArrayList<String> existingButtons = new ArrayList<>();
     private View view;
-    int counter = 0;
+    private int counter = 0;
 
 
     @Override

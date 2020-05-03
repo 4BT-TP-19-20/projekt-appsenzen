@@ -2,6 +2,7 @@ package com.example.appsenzen;
 
 
 import android.annotation.SuppressLint;
+import android.content.res.Resources;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -52,7 +53,7 @@ public class Timetable {
 
         }
 
-        return "";
+        return MainActivity.getContext().getString(R.string.no_class);
     }
 
     public Lesson getLesson(String className, int day){

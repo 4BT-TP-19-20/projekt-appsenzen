@@ -34,6 +34,7 @@
     <string name="missing_today">Missing today</string>
     <string name="pushups_done">Pushups done</string>
     <string name="missing_log">Missing log</string>
+    <string name="no_class">No class</string>
 
 
 </resources>

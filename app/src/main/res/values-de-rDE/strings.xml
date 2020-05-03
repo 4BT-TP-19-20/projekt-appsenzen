@@ -23,4 +23,5 @@
     <string name="missing_today">Fehlt heute</string>
     <string name="pushups_done">Liegestütze erledigt</string>
     <string name="missing_log">Fehlstunden Verlauf</string>
+    <string name="no_class">Keine Klasse</string>
 </resources>

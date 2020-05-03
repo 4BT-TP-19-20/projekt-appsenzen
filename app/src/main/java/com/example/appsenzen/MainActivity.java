@@ -1,5 +1,6 @@
 package com.example.appsenzen;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,17 +14,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity implements AddClassDialog.addClassDialogListener {
-
-    @Override
-    public void showToast(String classname) {
-        Toast.makeText(MainActivity.this, "Added '" + classname + "' to classes", Toast.LENGTH_SHORT).show();
-    }
+    private static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        context = this;
 
         //sets the created toolbar as the actionbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -117,6 +115,11 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void showToast(String classname) {
+        Toast.makeText(MainActivity.this, "Added '" + classname + "' to classes", Toast.LENGTH_SHORT).show();
+    }
+
     private void openSettingsActivity() {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
@@ -125,6 +128,10 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
     private void openDialog() {
         AddClassDialog addClassDialog = new AddClassDialog();
         addClassDialog.show(getSupportFragmentManager(), "example dialog");
+    }
+
+    public static Context getContext(){
+        return context;
     }
 
     public void refresh() {
