@@ -29,24 +29,19 @@ public class StudentActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String message = intent.getStringExtra(SchoolClassActivity.EXTRA_MESSAGE);
 
+        assert message != null;
         setViews(message);
 
         Button missingButton = findViewById(R.id.missingButton);
-        missingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                currentStudent.addPushups(SchoolClassHandler.getMultiplier());
-                update();
-            }
+        missingButton.setOnClickListener(v -> {
+            currentStudent.addPushups(SchoolClassHandler.getMultiplier());
+            update();
         });
 
         Button pushupsdoneButton = findViewById(R.id.pushupsdoneButton);
-        pushupsdoneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                currentStudent.clearPushups();
-                updatePushups();
-            }
+        pushupsdoneButton.setOnClickListener(v -> {
+            currentStudent.clearPushups();
+            updatePushups();
         });
     }
 
@@ -65,9 +60,9 @@ public class StudentActivity extends AppCompatActivity {
         String studentName = infos[0];
         String studentClass = infos[1];
 
-        TextView textViewName = findViewById(R.id.textViewName);
+        TextView textViewName = findViewById(R.id.text_name);
         textViewName.setText(studentName);
-        TextView textViewClass = findViewById(R.id.textViewClass);
+        TextView textViewClass = findViewById(R.id.text_class);
         textViewClass.setText(studentClass);
 
         currentStudent = SchoolClassHandler.getSchoolClass(studentClass).getStudent(studentName);

@@ -17,4 +17,10 @@
     <string name="button_delete_yes">Löschen</string>
     <string name="button_delete_no">Abbrechen</string>
     <string name="delete_success">Alle Daten wurden gelöscht</string>
+    <string name="title_student">Schüler</string>
+    <string name="student_class">Klasse</string>
+    <string name="pushups_to_do">Zu erledigende Liegestütze</string>
+    <string name="missing_today">Fehlt heute</string>
+    <string name="pushups_done">Liegestütze erledigt</string>
+    <string name="missing_log">Fehlstunden Verlauf</string>
 </resources>

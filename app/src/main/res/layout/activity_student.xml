@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -16,98 +16,120 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
-            app:layout_constraintHorizontal_bias="0.0">
+            app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar">
 
         <TextView
                 android:id="@+id/title"
-                android:text="Student"
+                android:text="@string/title_student"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
                 style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-        />
+                />
 
     </androidx.appcompat.widget.Toolbar>
-    <TextView
-            android:text="Name: "
-            android:layout_width="65dp"
-            android:layout_height="20dp" android:id="@+id/textView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.096"
-            app:layout_constraintVertical_bias="0.136" android:textStyle="bold" android:textSize="16sp"/>
+
     <TextView
             android:text="@string/student_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textViewName"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.504" app:layout_constraintVertical_bias="0.137"
-            android:textAlignment="viewStart"/>
-    <TextView
-            android:text="Class:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textView4"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:textStyle="bold" android:textSize="16sp"
-            app:layout_constraintHorizontal_bias="0.09" app:layout_constraintVertical_bias="0.197"/>
-    <TextView
-            android:text="student class"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textViewClass"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="0.199" android:textAlignment="viewStart"/>
-    <TextView
-            android:text="Missing Log:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textView6"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:textSize="16sp" android:textStyle="bold"
-            app:layout_constraintHorizontal_bias="0.103" app:layout_constraintVertical_bias="0.467"/>
-    <TextView
-            android:layout_width="343dp"
-            android:layout_height="329dp" android:id="@+id/textViewLog"
-            android:scrollbars="vertical"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.485" app:layout_constraintVertical_bias="0.912"
-    />
-    <TextView
-            android:text="Pushsups to make: "
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textView3"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="0.255" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.114" android:textStyle="bold"/>
-    <TextView
-            android:text="pushupnr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textViewPushups"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_bias="0.255" android:textAlignment="viewStart"/>
-    <Button
-            android:text="Missing Today"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="32dp"/>
+
+    <TextView
+            android:text="@string/student_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/missingButton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.117"
-            app:layout_constraintVertical_bias="0.348"/>
-    <Button
-            android:text="Pushups Done"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_name"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/text_class"/>
+
+    <TextView
+            android:text="@string/student_class"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/pushupsdoneButton"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.886"
-            app:layout_constraintVertical_bias="0.348"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:layout_marginTop="32dp"
+            />
+
+    <TextView
+            android:text="@string/student_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_class"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
+            app:layout_constraintStart_toStartOf="@+id/textViewPushups"/>
+
+    <TextView
+            android:text="@string/pushups_to_do"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            android:layout_marginTop="32dp"/>
+
+    <TextView
+            android:text="@string/pushups_to_do"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewPushups"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView3"
+            app:layout_constraintStart_toStartOf="@+id/pushupsdoneButton"/>
+
+    <Button
+            android:text="@string/missing_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/missingButton"
+            app:layout_constraintStart_toStartOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            android:layout_marginTop="32dp"
+            />
+
+    <Button
+            android:text="@string/pushups_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pushupsdoneButton"
+            app:layout_constraintBaseline_toBaselineOf="@+id/missingButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp"/>
+
+    <TextView
+            android:text="@string/missing_log"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/missingButton"
+            app:layout_constraintStart_toStartOf="@+id/missingButton"
+            android:layout_marginTop="32dp"
+            />
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewLog"
+            android:scrollbars="vertical"
+
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="16dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
