@@ -39,7 +39,7 @@ public class AddStudentDialog extends AppCompatDialogFragment {
         builder.setView(view).setTitle("Add Student").setNegativeButton("Cancel", (dialog, which) -> {
 
         }).setPositiveButton("Add", (dialog, which) -> {
-            String studentName = editText.getText().toString().toUpperCase();
+            String studentName = editText.getText().toString();
             listener.showToast(studentName);
         });
 

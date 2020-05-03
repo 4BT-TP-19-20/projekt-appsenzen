@@ -48,13 +48,17 @@ public class Student implements Serializable {
     public void addPushups(int pushups) {
         remainingPushups += pushups;
         totalPushups += pushups;
+
+        SchoolClassHandler.saveLists();
     }
 
     public void clearPushups() {
         remainingPushups = 0;
+
+        SchoolClassHandler.saveLists();
     }
 
-    public void logMissing(String name) {
+    public void addMissedHour() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm d MMM yyyy", Locale.GERMANY);
         if (myMissingLog == null) {
             myMissingLog = dateFormat.format(new Date()) + " " + name + " missed an hour!\n";
@@ -62,5 +66,6 @@ public class Student implements Serializable {
             myMissingLog += dateFormat.format(new Date()) + " " + name + " missed an hour!\n";
         }
 
+        SchoolClassHandler.saveLists();
     }
 }

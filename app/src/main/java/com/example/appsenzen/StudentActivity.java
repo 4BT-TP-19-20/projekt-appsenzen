@@ -5,6 +5,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
@@ -34,7 +35,7 @@ public class StudentActivity extends AppCompatActivity {
         Button missingButton = findViewById(R.id.missingButton);
         missingButton.setOnClickListener(v -> {
             currentStudent.addPushups(SchoolClassHandler.getMultiplier());
-            update();
+            addMissedHour();
         });
 
         Button pushupsdoneButton = findViewById(R.id.pushupsdoneButton);
@@ -51,6 +52,7 @@ public class StudentActivity extends AppCompatActivity {
                 onBackPressed();
                 return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -72,7 +74,7 @@ public class StudentActivity extends AppCompatActivity {
     }
 
     private void updateLog(){
-        TextView textViewLog = findViewById(R.id.textViewLog);
+        TextView textViewLog = findViewById(R.id.list_missing_log);
         textViewLog.setMovementMethod(new ScrollingMovementMethod());
         if(currentStudent.getLog() == null){
             textViewLog.setText("Never Missed an Hour!");
@@ -86,8 +88,8 @@ public class StudentActivity extends AppCompatActivity {
         textViewPushups.setText(String.valueOf(currentStudent.getRemainingPushups()));
     }
 
-    private void update(){
-        currentStudent.logMissing(currentStudent.getName());
+    private void addMissedHour(){
+        currentStudent.addMissedHour();
         updateLog();
         updatePushups();
     }
