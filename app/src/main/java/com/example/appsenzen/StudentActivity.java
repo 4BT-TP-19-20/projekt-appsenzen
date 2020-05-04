@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public class StudentActivity extends AppCompatActivity {
@@ -77,7 +78,16 @@ public class StudentActivity extends AppCompatActivity {
         TextView textViewLog = findViewById(R.id.list_missing_log);
         textViewLog.setMovementMethod(new ScrollingMovementMethod());
         if(currentStudent.getLog() == null){
-            textViewLog.setText("Never Missed an Hour!");
+
+            switch (Locale.getDefault().getLanguage()){
+                case "en": textViewLog.setText("Never Missed an Hour!");
+                            break;
+                case "de": textViewLog.setText("Hat nie eine Stunde verpasst!");
+                            break;
+                case "it": textViewLog.setText("Non ha mai perso un ora!");
+                            break;
+            }
+
         } else {
             textViewLog.setText(currentStudent.getLog());
         }

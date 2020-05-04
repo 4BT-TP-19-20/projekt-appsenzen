@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public class AddStudentDialog extends AppCompatDialogFragment {
@@ -36,12 +37,8 @@ public class AddStudentDialog extends AppCompatDialogFragment {
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_add_student,null);
         assert getArguments() != null;
-        builder.setView(view).setTitle("Add Student").setNegativeButton("Cancel", (dialog, which) -> {
 
-        }).setPositiveButton("Add", (dialog, which) -> {
-            String studentName = editText.getText().toString();
-            listener.showToast(studentName);
-        });
+        setLanguage(builder, view);
 
         editText = view.findViewById(R.id.edit_student_name);
 
@@ -52,4 +49,29 @@ public class AddStudentDialog extends AppCompatDialogFragment {
         void showToast(String studentName);
     }
 
+    private void setLanguage(AlertDialog.Builder builder, View view){
+        switch (Locale.getDefault().getLanguage()){
+            case "en" : builder.setView(view).setTitle("Add Student").setNegativeButton("Cancel", (dialog, which) -> {
+
+                        }).setPositiveButton("Add", (dialog, which) -> {
+                            String studentName = editText.getText().toString();
+                            listener.showToast(studentName);
+                        });
+                        break;
+            case "de" :builder.setView(view).setTitle("Schüler hinzufügen").setNegativeButton("Abbrechen", (dialog, which) -> {
+
+                        }).setPositiveButton("Hinzufügen", (dialog, which) -> {
+                            String studentName = editText.getText().toString();
+                            listener.showToast(studentName);
+                        });
+                        break;
+            case "it" :builder.setView(view).setTitle("Aggiungi Studente").setNegativeButton("Annulla", (dialog, which) -> {
+
+                        }).setPositiveButton("Aggiungi", (dialog, which) -> {
+                            String studentName = editText.getText().toString();
+                            listener.showToast(studentName);
+                        });
+                break;
+        }
+    }
 }

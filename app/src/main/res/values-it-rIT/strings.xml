@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AppSenzen</string>
+    <string name="menu_settings">Impostazioni</string>
+    <string name="tab_classes">Classi</string>
+    <string name="tab_dashboard">Dashboard</string>
+    <string name="tab_timetable">"Orario "</string>
+    <string name="delete_title">Cancellare tutti i dati</string>
+    <string name="delete_summary">Cancellare tutti i dati, questa azione è irreversibile</string>
+    <string name="button_delete_yes">Cancellare</string>
+    <string name="button_delete_no">Annullare</string>
+    <string name="delete_success">"Tutti i dati sono stati cancellati "</string>
+    <string name="pushups_per_skip">Flessioni/Ora saltata</string>
+    <string name="add_class">Aggiungi classe</string>
+    <string name="title_student">Studente</string>
+    <string name="student_name">Studente</string>
+    <string name="student_class">Classe</string>
+    <string name="pushups_to_do">Flessioni mancanti</string>
+    <string name="missing_today">Assente oggi</string>
+    <string name="pushups_done">"Flessioni fatte "</string>
+    <string name="missing_log">"Cronologia assenze "</string>
+    <string name="no_class">"Nessuna classe "</string>
+    <string name="class_name">"Nome della classe "</string>
+</resources>
