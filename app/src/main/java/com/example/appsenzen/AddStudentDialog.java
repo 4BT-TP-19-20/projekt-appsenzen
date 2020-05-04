@@ -3,7 +3,6 @@ package com.example.appsenzen;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+<<<<<<< Updated upstream
 import java.util.Objects;
+=======
+import java.util.Locale;
+>>>>>>> Stashed changes
 
 public class AddStudentDialog extends AppCompatDialogFragment {
     private EditText editText ;

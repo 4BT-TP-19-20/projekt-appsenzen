@@ -1,8 +1,6 @@
 package com.example.appsenzen;
 
-
 import android.annotation.SuppressLint;
-import android.content.res.Resources;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
