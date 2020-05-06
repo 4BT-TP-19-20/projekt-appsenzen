@@ -11,11 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-<<<<<<< Updated upstream
-import java.util.Objects;
-=======
-import java.util.Locale;
->>>>>>> Stashed changes
 
 public class AddClassDialog extends AppCompatDialogFragment {
     private EditText editText;
