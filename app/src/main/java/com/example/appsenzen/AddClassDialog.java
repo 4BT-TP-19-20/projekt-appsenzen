@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-
 public class AddClassDialog extends AppCompatDialogFragment {
     private EditText editText;
     private addClassDialogListener listener;
@@ -34,13 +33,7 @@ public class AddClassDialog extends AppCompatDialogFragment {
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_add_class, null);
 
-        builder.setView(view).setTitle("Add Class").setNegativeButton("Cancel", (dialog, which) -> {
-
-        }).setPositiveButton("Add", (dialog, which) -> {
-            String classname = editText.getText().toString().toUpperCase();
-            SchoolClassHandler.addSchoolClass(classname);
-            listener.showToast(classname);
-        });
+        setLanguage(builder, view);
 
         editText = view.findViewById(R.id.edit_class_name);
 
@@ -49,5 +42,34 @@ public class AddClassDialog extends AppCompatDialogFragment {
 
     public interface addClassDialogListener {
         void showToast(String classname);
+    }
+
+    private void setLanguage(AlertDialog.Builder builder, View view){
+        switch (Locale.getDefault().getLanguage()){
+            case "en": builder.setView(view).setTitle("Add Class").setNegativeButton("Cancel", (dialog, which) -> {
+
+            }).setPositiveButton("Add", (dialog, which) -> {
+                String classname = editText.getText().toString().toUpperCase();
+                SchoolClassHandler.addSchoolClass(classname);
+                listener.showToast(classname);
+            });
+                break;
+            case "de": builder.setView(view).setTitle("Klasse hinzufügen").setNegativeButton("Abbrechen", (dialog, which) -> {
+
+            }).setPositiveButton("Hinzufügen", (dialog, which) -> {
+                String classname = editText.getText().toString().toUpperCase();
+                SchoolClassHandler.addSchoolClass(classname);
+                listener.showToast(classname);
+            });
+                break;
+            case "it": builder.setView(view).setTitle("Aggiungi Classe").setNegativeButton("Annulla", (dialog, which) -> {
+
+            }).setPositiveButton("Aggiungi", (dialog, which) -> {
+                String classname = editText.getText().toString().toUpperCase();
+                SchoolClassHandler.addSchoolClass(classname);
+                listener.showToast(classname);
+            });
+                break;
+        }
     }
 }

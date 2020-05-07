@@ -87,7 +87,7 @@ public abstract class SchoolClassHandler {
         return schoolClasses.get(index);
     }
 
-    public static boolean contains(String name){
+    public static boolean contains(String name) {
         return schoolClassNames.contains(name);
     }
 
@@ -99,102 +99,56 @@ public abstract class SchoolClassHandler {
 
         schoolClasses = new ArrayList<>();
         schoolClassNames = new ArrayList<>();
+
         multiplier = 20;
+
+        timetable = new Timetable();
+
         saveLists();
     }
 
-    public static void saveLists() {
+    private static void saveObject(Object object, String name) {
         try {
-            FileOutputStream fos = activityContext.openFileOutput("schoolClasses.ser", Context.MODE_PRIVATE);
+            FileOutputStream fos = activityContext.openFileOutput(name, Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(schoolClasses);
+            oos.writeObject(object);
             oos.close();
             fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            FileOutputStream fos = activityContext.openFileOutput("schoolClassNames.ser", Context.MODE_PRIVATE);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(schoolClassNames);
-            oos.close();
-            fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            FileOutputStream fos = activityContext.openFileOutput("multiplier.ser", Context.MODE_PRIVATE);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(multiplier);
-            oos.close();
-            fos.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            FileOutputStream fos = activityContext.openFileOutput("timetable.ser", Context.MODE_PRIVATE);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(timetable);
-            oos.close();
-            fos.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    private static Object loadObject(String name) {
+        Object object = null;
+
+        try {
+            FileInputStream fis = activityContext.openFileInput(name);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            object = ois.readObject();
+            ois.close();
+            fis.close();
+        } catch (FileNotFoundException e) {
+            //ignore
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return object;
+    }
+
+    public static void saveLists() {
+        saveObject(schoolClasses, "schoolClasses.ser");
+        saveObject(schoolClassNames, "schoolClassNames.ser");
+        saveObject(multiplier, "multiplier.ser");
+        //saveObject(timetable, "timetable.ser");
+    }
+
     public static void loadLists() {
-        try {
-            FileInputStream fis = activityContext.openFileInput("schoolClasses.ser");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            schoolClasses = (ArrayList<SchoolClass>) ois.readObject();
-            ois.close();
-            fis.close();
-        } catch (FileNotFoundException e) {
-            //ignore
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            FileInputStream fis = activityContext.openFileInput("schoolClassNames.ser");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            schoolClassNames = (ArrayList<String>) ois.readObject();
-            ois.close();
-            fis.close();
-        } catch (FileNotFoundException e) {
-            //ignore
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            FileInputStream fis = activityContext.openFileInput("multiplier.ser");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            multiplier = (Integer) ois.readObject();
-            ois.close();
-            fis.close();
-        } catch (FileNotFoundException e) {
-            //ignore
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            FileInputStream fis = activityContext.openFileInput("timetable.ser");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            timetable = (Timetable) ois.readObject();
-            ois.close();
-            fis.close();
-        } catch (FileNotFoundException e) {
-            //ignore
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        schoolClasses = (ArrayList<SchoolClass>) loadObject("schoolClasses.ser");
+        schoolClassNames = (ArrayList<String>) loadObject("schoolClassNames.ser");
+        multiplier = (Integer) loadObject("multiplier.ser");
+        //timetable = (Timetable) loadObject("timetable.ser");
     }
 
 }

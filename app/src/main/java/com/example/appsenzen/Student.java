@@ -52,10 +52,28 @@ public class Student implements Serializable {
 
     public void addMissedHour() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm d MMM yyyy", Locale.GERMANY);
-        if (myMissingLog == null) {
-            myMissingLog = dateFormat.format(new Date()) + " " + name + " missed an hour!\n";
-        } else {
-            myMissingLog += dateFormat.format(new Date()) + " " + name + " missed an hour!\n";
+        switch (Locale.getDefault().getLanguage()){
+            case "en":
+                if (myMissingLog == null) {
+                    myMissingLog = dateFormat.format(new Date()) + " " + name + " missed an hour!\n";
+                } else {
+                    myMissingLog += dateFormat.format(new Date()) + " " + name + " missed an hour!\n";
+                }
+                break;
+            case "de":
+                if (myMissingLog == null) {
+                    myMissingLog = dateFormat.format(new Date()) + " " + name + " hat eine Stunde verpasst!\n";
+                } else {
+                    myMissingLog += dateFormat.format(new Date()) + " " + name + " hat eine Stunde verpasst!\n";
+                }
+                break;
+            case "it":
+                if (myMissingLog == null) {
+                    myMissingLog = dateFormat.format(new Date()) + " " + name + " ha perso un'ora!\n";
+                } else {
+                    myMissingLog += dateFormat.format(new Date()) + " " + name + " ha perso un'ora!\n";
+                }
+                break;
         }
 
         SchoolClassHandler.saveLists();
