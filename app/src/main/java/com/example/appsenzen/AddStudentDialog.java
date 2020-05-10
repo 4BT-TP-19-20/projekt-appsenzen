@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import java.util.Locale;
+
 public class AddStudentDialog extends AppCompatDialogFragment {
     private EditText editText ;
     private addStudentDialogListener listener;
