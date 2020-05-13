@@ -28,7 +28,5 @@
     <!-- Other -->
     <string name="no_class">Keine Klasse</string>
     <string name="class_name">Klassenname</string>
-    <string name="timetable_image_link">Link zum Bild vom Stundenplan</string>
-    <string name="your_link">Dein Link</string>
 
 </resources>

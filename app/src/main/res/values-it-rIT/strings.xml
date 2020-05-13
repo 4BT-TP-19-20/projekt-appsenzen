@@ -21,6 +21,4 @@
     <string name="missing_log">"Cronologia assenze "</string>
     <string name="no_class">"Nessuna classe "</string>
     <string name="class_name">"Nome della classe "</string>
-    <string name="timetable_image_link">Link all\' immagine dell\' Orario</string>
-    <string name="your_link">Il tuo link</string>
 </resources>
