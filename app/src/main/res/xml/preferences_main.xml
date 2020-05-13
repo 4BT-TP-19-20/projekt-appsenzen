@@ -20,6 +20,12 @@
         android:summary="@string/delete_summary"
         app:icon="@drawable/ic_delete_black_24dp"
         />
+    <EditTextPreference
+            android:key="timetable_image_link"
+            android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/timetable_image_link"
+            android:summary="@string/your_link"
+            android:defaultValue="http://appsenzenhostprobe.000webhostapp.com/stundenplan.png"/>
 
 
 </PreferenceScreen>
