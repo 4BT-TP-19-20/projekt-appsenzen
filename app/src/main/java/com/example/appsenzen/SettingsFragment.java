@@ -58,13 +58,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             return true;
         });
 
-        final EditTextPreference timetablepreference = findPreference("timetable_image_link");
-        assert timetablepreference != null;
 
-        timetablepreference.setOnPreferenceChangeListener((preference, newValue) -> {
-            MainActivity.setTimetableurl((String)newValue);
-            return true;
-        });
 
     }
 

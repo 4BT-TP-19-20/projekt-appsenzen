@@ -27,7 +27,5 @@
     <!-- Other -->
     <string name="no_class">No class</string>
     <string name="class_name">Class name</string>
-    <string name="timetable_image_link">Timetable Image link</string>
-    <string name="your_link">Your timetable link</string>
 
 </resources>

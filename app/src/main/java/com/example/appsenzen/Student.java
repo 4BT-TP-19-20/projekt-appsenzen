@@ -25,8 +25,16 @@ public class Student implements Serializable {
         return name;
     }
 
+    public SchoolClass getSchoolClass() {
+        return schoolClass;
+    }
+
     public void setSchoolClass(SchoolClass schoolClass) {
         this.schoolClass = schoolClass;
+    }
+
+    public int getTotalPushups() {
+        return totalPushups;
     }
 
     public int getRemainingPushups() {

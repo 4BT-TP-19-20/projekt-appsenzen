@@ -3,6 +3,7 @@ package com.example.appsenzen;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +11,9 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
-import java.util.Locale;
 
 import java.util.Locale;
+import java.util.Objects;
 
 public class AddClassDialog extends AppCompatDialogFragment {
     private EditText editText;
