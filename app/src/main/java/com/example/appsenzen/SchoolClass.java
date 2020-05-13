@@ -65,14 +65,6 @@ public class SchoolClass implements Serializable {
         return students.get(index);
     }
 
-    public String getName(int index){
-        return studentNames.get(index);
-    }
-
-    public boolean contains(String name) {
-        return studentNames.contains(name);
-    }
-
     public void clear() {
         students = new ArrayList<>();
         studentNames = new ArrayList<>();
