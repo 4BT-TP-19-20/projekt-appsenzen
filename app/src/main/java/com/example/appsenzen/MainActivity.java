@@ -15,6 +15,7 @@ import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity implements AddClassDialog.addClassDialogListener {
     private static Context context;
+    private static String timetableurl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
         setupFloatingButton();
         init();
         setupTimetable();
+
+        //timetableurl = "http://appsenzenhostprobe.000webhostapp.com/stundenplan.png";
     }
 
     private void setupTabs() {
@@ -141,4 +144,11 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
         overridePendingTransition(0, 0);
     }
 
+    public static String getTimetableurl() {
+        return timetableurl;
+    }
+
+    public static void setTimetableurl(String param) {
+        timetableurl = param;
+    }
 }
