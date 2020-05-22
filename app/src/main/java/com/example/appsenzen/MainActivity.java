@@ -13,6 +13,10 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity implements AddClassDialog.addClassDialogListener {
     private static Context context;
     private static String timetableurl;
@@ -69,6 +73,21 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
 
     //TODO replace with file
     private void setupTimetable() {
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("timetable.csv"));
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] params = line.split(";");
+                SchoolClassHandler.getTimetable().addLesson(params[0], new Integer(params[1]), new Integer(params[2]));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+/*
         SchoolClassHandler.getTimetable().addLesson("1DT", 1, 1);
         SchoolClassHandler.getTimetable().addLesson("4BT", 1, 2);
         SchoolClassHandler.getTimetable().addLesson("1AT", 1, 3);
@@ -91,6 +110,9 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
 
         SchoolClassHandler.getTimetable().addLesson("3BT", 5, 3);
         SchoolClassHandler.getTimetable().addLesson("2AT", 5, 4);
+        
+ */
+
 
         //for testing:
         //SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
@@ -133,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
         addClassDialog.show(getSupportFragmentManager(), "example dialog");
     }
 
-    public static Context getContext(){
+    public static Context getContext() {
         return context;
     }
 
