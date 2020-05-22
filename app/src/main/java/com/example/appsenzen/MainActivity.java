@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
     //TODO replace with file
     private void setupTimetable() {
 
+        /*
         try {
             BufferedReader br = new BufferedReader(new FileReader("timetable.csv"));
 
@@ -86,8 +87,8 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
             e.printStackTrace();
         }
 
+        */
 
-/*
         SchoolClassHandler.getTimetable().addLesson("1DT", 1, 1);
         SchoolClassHandler.getTimetable().addLesson("4BT", 1, 2);
         SchoolClassHandler.getTimetable().addLesson("1AT", 1, 3);
@@ -111,8 +112,6 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
         SchoolClassHandler.getTimetable().addLesson("3BT", 5, 3);
         SchoolClassHandler.getTimetable().addLesson("2AT", 5, 4);
         
- */
-
 
         //for testing:
         //SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
@@ -164,13 +163,5 @@ public class MainActivity extends AppCompatActivity implements AddClassDialog.ad
         overridePendingTransition(0, 0);
         startActivity(getIntent());
         overridePendingTransition(0, 0);
-    }
-
-    public static String getTimetableurl() {
-        return timetableurl;
-    }
-
-    public static void setTimetableurl(String param) {
-        timetableurl = param;
     }
 }
